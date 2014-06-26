@@ -1,0 +1,10 @@
+{% extends admin.getTemplate('base_list_field') %}
+
+{% block field %}
+    {% if
+        field_description.options.choices is defined and
+        field_description.options.choices[value] is defined
+    %}
+        {{ field_description.options.choices[value] }}
+    {% endif %}
+{% endblock %}

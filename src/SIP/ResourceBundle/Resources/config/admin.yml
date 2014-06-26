@@ -1,0 +1,9 @@
+parameters:
+    sip.content.read_estage.admin.class: SIP\ResourceBundle\Admin\RealEstateAdmin
+
+services:
+    sip.content.read_estage.admin:
+        class: %sip.content.read_estage.admin.class%
+        tags:
+            - { name: sonata.admin, manager_type: orm, audit: false, group: content, label: read_estage }
+        arguments: [null, SIP\ResourceBundle\Entity\RealEstate, SonataAdminBundle:CRUD, @sonata.admin.pool]

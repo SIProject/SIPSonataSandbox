@@ -1,0 +1,5 @@
+services:
+    sip.image_file.form.type:
+        class: SIP\ResourceBundle\Form\Type\ImageFileType
+        tags:
+            - { name: form.type, alias: image_file_type }

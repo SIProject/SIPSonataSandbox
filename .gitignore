@@ -1,0 +1,6 @@
+vendor/*
+web/bundles/*
+app/cache/*
+app/logs/*
+web/uploads/real_estate/*
+parameters.yml

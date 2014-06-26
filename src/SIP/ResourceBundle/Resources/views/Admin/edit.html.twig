@@ -1,0 +1,20 @@
+{% extends "SonataAdminBundle:CRUD:edit.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link href="{{ asset('vendors/select2/select2.css') }}" rel="stylesheet" />
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="{{ asset('vendors/select2/select2.js') }}"></script>
+{% endblock %}
+
+{% block form %}
+    {{ parent() }}
+
+    {{ form_javascript(form) }}
+    {{ form_stylesheet(form) }}
+{% endblock %}

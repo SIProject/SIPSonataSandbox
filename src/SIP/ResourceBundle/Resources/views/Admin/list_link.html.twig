@@ -1,0 +1,5 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field%}
+    <a href="{{ value|raw }}" target="_blank">{{ 'admin_list_link_title'|trans }}</a>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field%}
+    {% if value %}
+        {% if 'http' in value %}
+            <img src="{{ value }}" width="100">
+        {% else %}
+            <img src="{{ app.request.schemeAndHttpHost }}/{{ value }}" width="100">
+        {% endif %}
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,4 @@
+security.login.username: Логин
+security.login.password: Пароль
+forgotten_password: Забыли пароль?
+title_user_authentication: Авторизация

@@ -1,0 +1,25 @@
+Real Estate List: Список объектов недвижимости
+read_estage: Объекты недвижимости
+Actions: Действия
+
+Title: Название
+Image: Изображение
+Price: Цена
+Currency: Валюта
+Link: Ссылка на источник
+Date Upload: Дата загрузки
+Date Update: Дата обновления
+Location: Расположение
+Description: Описание
+Distance: Расстояние от МКАД
+Home Area: Площадь дома
+Piece Area: Площадь участка
+Uploaded Image: Изображение
+City: Населенный пункт
+
+General: Осноные
+properties: Детали
+price: Цена
+system: Системные
+
+admin_list_link_title: источник
