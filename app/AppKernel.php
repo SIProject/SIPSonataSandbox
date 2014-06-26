@@ -15,9 +15,9 @@ class AppKernel extends Kernel
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
 
-            new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
-
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
+
+            new Doctrine\Bundle\MongoDBBundle\DoctrineMongoDBBundle(),
 
             new JMS\AopBundle\JMSAopBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle($this),
@@ -26,15 +26,13 @@ class AppKernel extends Kernel
 
             new FOS\UserBundle\FOSUserBundle(),
 
-            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
-
             new Genemu\Bundle\FormBundle\GenemuFormBundle(),
 
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Sonata\BlockBundle\SonataBlockBundle(),
             new Sonata\AdminBundle\SonataAdminBundle(),
-            new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
             new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
+            new Sonata\DoctrineMongoDBAdminBundle\SonataDoctrineMongoDBAdminBundle(),
             new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
             new Sonata\CoreBundle\SonataCoreBundle(),
 
@@ -46,7 +44,6 @@ class AppKernel extends Kernel
         if (in_array($this->getEnvironment(), array('dev'))) {
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
-            $bundles[] = new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle();
         }
 
         return $bundles;

@@ -1,21 +1,6 @@
 sonata_admin:
     title:      SIP Admin Panel
     title_logo: bundles/sipresource/img/logo_litle.png
-    options:
-        #use_select2: false
-    security:
-        handler: sonata.admin.security.handler.acl
-        # acl security information
-        information:
-            GUEST:    [VIEW, LIST]
-            STAFF:    [EDIT, LIST, CREATE]
-            EDITOR:   [OPERATOR]
-            ADMIN:    [MASTER]
-        # permissions not related to an object instance and also to be available when objects do not exist
-        # the DELETE admin permission means the user is allowed to batch delete objects
-        admin_permissions: [CREATE, LIST, DELETE, UNDELETE, OPERATOR, MASTER]
-        # permission related to the objects
-        object_permissions: [VIEW, EDIT, DELETE, UNDELETE, OPERATOR, MASTER, OWNER]
     dashboard:
         blocks:
             # display a dashboard block
@@ -34,9 +19,3 @@ sonata_block:
         sonata.user.block.account:
         sonata.admin.block.search_result:
             contexts: [admin]
-
-sonata_doctrine_orm_admin:
-    templates:
-        form:
-            - SonataDoctrineORMAdminBundle:Form:form_admin_fields.html.twig
-            - SIPResourceBundle:Form:fields.html.twig

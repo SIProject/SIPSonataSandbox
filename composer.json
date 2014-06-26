@@ -1,39 +1,36 @@
 {
-    "name": "SIP Realty",
-    "type": "project",
-    "description": "SIP Realty",
+    "name": "SIP Sonata sandbox",
+    "type": "sandbox",
+    "description": "SIP  Sonata sandbox",
     "autoload": {
         "psr-0": { "": "src/" }
     },
     "require": {
-        "php":                                     ">=5.3.3",
+        "php":                                          ">=5.3.3",
 
-        "doctrine/orm":                            "~2.2,>=2.2.3",
-        "doctrine/doctrine-bundle":                "1.2.*",
-        "doctrine/doctrine-migrations-bundle":     "dev-master",
+        "doctrine/mongodb-odm":                         "1.0.*@dev",
+        "doctrine/mongodb-odm-bundle":                  "3.0.*@dev",
 
-        "twig/extensions":                         "1.0.*",
+        "twig/extensions":                              "1.0.*",
 
-        "symfony/icu":                             "1.1.*",
-        "symfony/symfony":                         "~2.4",
-        "symfony/assetic-bundle":                  "~2.3",
-        "symfony/monolog-bundle":                  "~2.4",
-        "symfony/swiftmailer-bundle":              "~2.3",
+        "symfony/icu":                                  "1.1.*",
+        "symfony/symfony":                              "~2.4",
+        "symfony/assetic-bundle":                       "~2.3",
+        "symfony/monolog-bundle":                       "~2.4",
+        "symfony/swiftmailer-bundle":                   "~2.3",
 
-        "sensio/distribution-bundle":              "~2.3",
-        "sensio/framework-extra-bundle":           "~2.3",
+        "sensio/distribution-bundle":                   "~2.3",
+        "sensio/framework-extra-bundle":                "~2.3",
 
-        "jms/serializer-bundle":                    "*",
-        "jms/security-extra-bundle":                "1.5.*",
+        "jms/serializer-bundle":                        "*",
+        "jms/security-extra-bundle":                    "1.5.*",
 
-        "stof/doctrine-extensions-bundle":          "*",
+        "sonata-project/admin-bundle":                  "2.3.x-dev",
+        "sonata-project/user-bundle":                   "2.3.x-dev",
+        "sonata-project/doctrine-mongodb-admin-bundle": "2.3.x-dev",
+        "sonata-project/block-bundle":                  "2.2.x-dev",
 
-        "sonata-project/admin-bundle":              "2.3.x-dev",
-        "sonata-project/user-bundle":               "2.3.x-dev",
-        "sonata-project/doctrine-orm-admin-bundle": "2.3.x-dev",
-        "sonata-project/block-bundle":              "2.2.x-dev",
-
-        "genemu/form-bundle":                       "2.2.*"
+        "genemu/form-bundle":                           "2.2.*"
         
     },
     "scripts": {
@@ -42,20 +39,15 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "app/console cache:clear --env=prod",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-            "app/console doctrine:cache:clear-metadata --env=prod",
-            "app/console doctrine:cache:clear-query --env=prod",
-            "app/console doctrine:cache:clear-result --env=prod"
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
         ],
         "post-update-cmd": [
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "app/console cache:clear --env=prod",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-            "app/console doctrine:cache:clear-metadata --env=prod",
-            "app/console doctrine:cache:clear-query --env=prod",
-            "app/console doctrine:cache:clear-result --env=prod"
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
+
         ]
     },
     "config": {
