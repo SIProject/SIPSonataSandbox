@@ -95,6 +95,10 @@ public function getInt($key, $default = 0, $deep = false)
 {
 return (int) $this->get($key, $default, $deep);
 }
+public function getBoolean($key, $default = false, $deep = false)
+{
+return $this->filter($key, $default, $deep, FILTER_VALIDATE_BOOLEAN);
+}
 public function filter($key, $default = null, $deep = false, $filter = FILTER_DEFAULT, $options = array())
 {
 $value = $this->get($key, $default, $deep);
@@ -759,7 +763,12 @@ return 443;
 }
 }
 if ($host = $this->headers->get('HOST')) {
-if (false !== $pos = strrpos($host,':')) {
+if ($host[0] ==='[') {
+$pos = strpos($host,':', strrpos($host,']'));
+} else {
+$pos = strrpos($host,':');
+}
+if (false !== $pos) {
 return intval(substr($host, $pos + 1));
 }
 return'https'=== $this->getScheme() ? 443 : 80;
@@ -768,11 +777,11 @@ return $this->server->get('SERVER_PORT');
 }
 public function getUser()
 {
-return $this->server->get('PHP_AUTH_USER');
+return $this->headers->get('PHP_AUTH_USER');
 }
 public function getPassword()
 {
-return $this->server->get('PHP_AUTH_PW');
+return $this->headers->get('PHP_AUTH_PW');
 }
 public function getUserInfo()
 {
@@ -824,7 +833,8 @@ public function isSecure()
 if (self::$trustedProxies && self::$trustedHeaders[self::HEADER_CLIENT_PROTO] && $proto = $this->headers->get(self::$trustedHeaders[self::HEADER_CLIENT_PROTO])) {
 return in_array(strtolower(current(explode(',', $proto))), array('https','on','ssl','1'));
 }
-return'on'== strtolower($this->server->get('HTTPS')) || 1 == $this->server->get('HTTPS');
+$https = $this->server->get('HTTPS');
+return !empty($https) &&'off'!== strtolower($https);
 }
 public function getHost()
 {
@@ -2223,7 +2233,6 @@ use Symfony\Component\Config\Loader\LoaderResolver;
 use Symfony\Component\Config\Loader\DelegatingLoader;
 use Symfony\Component\Config\ConfigCache;
 use Symfony\Component\ClassLoader\ClassCollectionLoader;
-use Symfony\Component\Filesystem\Filesystem;
 abstract class Kernel implements KernelInterface, TerminableInterface
 {
 protected $bundles = array();
@@ -2582,32 +2591,7 @@ $content = $dumper->dump(array('class'=> $class,'base_class'=> $baseClass));
 if (!$this->debug) {
 $content = static::stripComments($content);
 }
-$content = $this->removeAbsolutePathsFromContainer($content);
 $cache->write($content, $container->getResources());
-}
-private function removeAbsolutePathsFromContainer($content)
-{
-if (!class_exists('Symfony\Component\Filesystem\Filesystem')) {
-return $content;
-}
-$rootDir = $this->getRootDir();
-$previous = $rootDir;
-while (!file_exists($rootDir.'/composer.json')) {
-if ($previous === $rootDir = realpath($rootDir.'/..')) {
-return $content;
-}
-$previous = $rootDir;
-}
-$rootDir = rtrim($rootDir,'/');
-$cacheDir = $this->getCacheDir();
-$filesystem = new Filesystem();
-return preg_replace_callback("{'([^']*)(".preg_quote($rootDir)."[^']*)'}", function ($match) use ($filesystem, $cacheDir) {
-$prefix = isset($match[1]) && $match[1] ? "'$match[1]'.__DIR__" :"__DIR__";
-if ('.'=== $relativePath = rtrim($filesystem->makePathRelative($match[2], $cacheDir),'/')) {
-return $prefix;
-}
-return $prefix.".'/".$relativePath."'";
-}, $content);
 }
 protected function getContainerLoader(ContainerInterface $container)
 {
