@@ -1,3 +1,1 @@
-Админка для сервиса сбора объектов недвижимости
-===============================================
-@author: SIP <iljasuhinin@gmail.com>
+Latest build symfony 2 with SonataAdminBundle for mongodb odm.
