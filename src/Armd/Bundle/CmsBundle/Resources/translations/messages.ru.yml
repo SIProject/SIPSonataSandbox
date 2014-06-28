@@ -1,0 +1,78 @@
+sidemenu.link_container_pagetype: Блоки
+sidemenu.link_edit_pagetype: Настройки
+General: Основные
+Title: Заголовок
+Page Type Edit: Редактирование типа страниц
+Page Type List: Типы страниц
+
+Page: Разделы
+
+Container: Контейнер
+Container List: Список контейнеров
+Container Edit: Редактирование контейнера
+
+PageType: Типы страниц
+PageType List: Список типов страниц
+PageType Edit: Редактирование типа страницы
+
+PageContainer: Контейнер страницы
+Page Container List: Список блоков
+Page Container Edit: Редактирование блока
+
+Page Tree: Дерево разделов
+Page Menu: Меню
+Page List: Список разделов
+Page Edit: Редактирование раздела
+
+Streams: Информационные потоки
+
+Name: Название блока
+Settings: Параметры блока
+Usage Type: Представление
+Usage Service: Модуль
+Page Type: Тип страницы
+Is Main: Главный блок
+
+Template: Шаблон
+Containers: Блоки
+
+Slug: Псевдоним
+
+Layout: Шаблон
+
+Content Stream: Информационный поток
+
+Content Stream List: Список информационных потоков
+Content Stream Edit: Редактирование потока
+
+Domain: Домены
+Domain List: Список доменов
+Domain Edit: Редактирование домена
+Pattern: Доменное имя
+
+Site: Сайты
+Site List: Список сайтов
+Site Edit: Редактировать сайт
+Domains: Домены
+Menu Enabled: Выводить в меню
+To First Child: Переходить в первый дочерний раздел
+
+Area: Области контейнеров
+Area List: Список областей
+Area Show: Просмотр области
+
+link_action_create_container: Добавить контейнер
+link_action_history: Журнал изменений
+Dashboard: Панель управления
+link_action_page_list: К дереву разделов
+link_action_menu: Меню
+link_action_add_to_favorit: Добавить в избранное
+link_action_delete_from_favorit: Удалить из избранного
+
+Parameters: Параметры
+Logo: Логотип
+key: ключ
+value: значение
+
+action_copy: Копировать
+Go to admin page: К странице в админке

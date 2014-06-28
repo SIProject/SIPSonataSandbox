@@ -1,0 +1,24 @@
+services:
+    validator.armd_cms.template:
+        class: Armd\Bundle\CmsBundle\Validator\Constraints\TemplateValidator
+        tags:
+            - { name: validator.constraint_validator, alias: armd_cms.validator.template }
+        arguments: [@service_container]
+
+    validator.armd_cms.container_unique:
+        class: Armd\Bundle\CmsBundle\Validator\Constraints\ContainerUniqueValidator
+        tags:
+            - { name: validator.constraint_validator, alias: armd_cms.validator.container_unique }
+        arguments: [@doctrine]
+
+    validator.armd_cms.container_main:
+        class: Armd\Bundle\CmsBundle\Validator\Constraints\ContainerMainValidator
+        tags:
+            - { name: validator.constraint_validator, alias: armd_cms.validator.container_main }
+        arguments: [@doctrine]
+
+    validator.armd_cms.page_url_unique:
+        class: Armd\Bundle\CmsBundle\Validator\Constraints\PageUrlUniqueValidator
+        tags:
+            - { name: validator.constraint_validator, alias: armd_cms.validator.page_url_unique }
+        arguments: [@doctrine]

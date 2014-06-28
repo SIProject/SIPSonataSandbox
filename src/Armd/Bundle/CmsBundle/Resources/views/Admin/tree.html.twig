@@ -1,0 +1,101 @@
+{% extends base_template %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/armdadmin/js/tree.js') }}" type="text/javascript"></script>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/armdadmin/css/tree.css') }}" type="text/css" media="all" />
+<style>
+.x-panel-body { top: 0 !important; border: none !important; padding-top: 10px; }
+.x-grid-table * { border: none !important; }
+.x-grid-row .x-grid-cell-special { background-color: white }
+.x-btn-default-small .x-btn-inner { padding: 0 }
+</style>
+{% endblock %}
+
+
+{% block actions %}
+    <div class="sonata-actions-edit">
+        <ul>
+            {% if admin.hasRoute('create') and admin.isGranted('CREATE')%}
+                <li class="sae-element"><a href="{{ admin.generateUrl('create') }}">{% trans from 'SonataAdminBundle' %}link_action_create{% endtrans %}</a></li>
+            {% endif %}
+        </ul>
+    </div>
+    <form class="select_form clearfix" action="">
+        <label for="select_site">{% trans from 'SonataAdminBundle' %}label_select_site{% endtrans %}</label>
+        <select name="select_site" id="select_site" onchange="this.form.submit();" class="uniform">
+            {% for site in sites %}
+                {% if siteId is defined and site.getId() == siteId %}
+                    <option selected value="{{ site.getId() }}">{{ site.getTitle() }}</option>
+                {% else %}
+                    <option value="{{ site.getId() }}">{{ site.getTitle() }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+    </form>
+	<ul class="tree-actions" id="tree-actions">
+		<li>
+			<span id="selectAll">Выбрать все</span>
+		</li>
+		<li  class="to-open">
+			<span id="treeActions">Действие</span>
+			<ul>
+				<li class="ta-delete">
+					<a href="#">Удалить</a>
+				</li>
+				<!--<li class="ta-publish">
+					<a href="#">Опубликовать</a>
+				</li>
+				<li class="ta-unpublish">
+					<a href="#">Снять с публикации</a>
+				</li>-->
+			</ul>
+		</li>
+	</ul>
+	
+   
+{% endblock %}
+
+{% block favorites %}
+    <a class="page-header-favorite" id="_sys_add_favorive" {% if isFavorite(admin.getObjectIdentifier()) %}style="display: none;"{% endif %} href="#"></a>
+    <input type="hidden" id="_sys_add_favorive_url" value="{{ path('_sys_add_favorive', {'serviceId': admin.getObjectIdentifier()} ) }}">
+    <a class="page-header-favorite page-header-favorite-del" id="_sys_delete_favorit" {% if isFavorite(admin.getObjectIdentifier()) == null %}style="display: none;"{% endif %} href="#"></a>
+    <input type="hidden" id="_sys_delete_favorit_url" value="{{ path('_sys_delete_favorit', {'serviceId': admin.getObjectIdentifier()} ) }}">
+{% endblock %}
+
+{% block list_table %}
+    <table width="100%">
+        <tr valign="top">
+            <td width="70%" style="border: none; padding: 0 15px 0 0;">
+                <div id="tree"></div>
+            </td>
+            <td width="30%" style="padding:5px 0 0 0;border:none;">
+<div class="span10"><div class="span10-statika">
+                            <div class="span10-statika-header">
+                                <div class="span10-statika-header-img"></div>
+                                <h1>Легенда</h1>
+                                <div class="span10-statika-header-close"></div>
+                            </div>
+                            <div id="" class="cms-block cms-block-element">
+
+							<dl class='list-legend'>
+								<dt><img src="{{ asset('bundles/armdadmin/img/bt-tree-add.png') }}" alt="" /></dt>
+								<dd>Добавить</dd>
+								<dt><img src="{{ asset('bundles/armdadmin/img/bt-tree-3.png') }}" alt="" /></dt>
+								<dd>Копировать</dd>
+								<dt><img src="{{ asset('bundles/armdadmin/img/bt-tree-4.png') }}" alt="" /></dt>
+								<dd>Редактировать</dd>
+								<dt><img src="{{ asset('bundles/armdadmin/img/bt-tree-5.png') }}" alt="" /></dt>
+								<dd>Удалить</dd>
+							</dl>
+
+							</div>
+</div><div style="clear:both"></div></div>
+            </td>
+        </tr>
+    </table>
+{% endblock %}

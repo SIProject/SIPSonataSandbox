@@ -1,0 +1,14 @@
+{% extends 'WebProfilerBundle:Profiler:layout.html.twig' %}
+
+{% block toolbar %}
+    {% if collector.pageId %}
+        <div class="sf-toolbar-block">
+            <div class="sf-toolbar-icon">
+                <a href="{{ path('admin_armd_cms_page_edit', { 'id': collector.pageId }) }}" target="_blank">
+                    <span style="width:0px; height: 28px; vertical-align: middle;"></span>
+                    <span class="sf-toolbar-status">{% trans %}Go to admin page{% endtrans %}</span>
+                </a>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

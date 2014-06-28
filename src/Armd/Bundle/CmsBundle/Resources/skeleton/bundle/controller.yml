@@ -1,0 +1,8 @@
+parameters:
+    {{ extension_alias }}.controller.{{ extension_name }}.class: {{ namespace }}\Controller\{{ name }}Controller
+
+services:
+    {{ extension_alias }}.controller.{{ extension_name }}:
+        class: %{{ extension_alias }}.controller.{{ extension_name }}.class%
+        calls:
+            - [ setContainer, [ @service_container ] ]

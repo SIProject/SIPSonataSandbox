@@ -1,0 +1,24 @@
+services:
+    form.type.selectUsageService:
+        class: Armd\Bundle\CmsBundle\Form\Type\SelectUsageServiceType
+        tags:
+            - { name: form.type, alias: selectUsageService}
+        arguments: [@armd_cms.page_manager]
+
+    form.type.selectUsageType:
+        class: Armd\Bundle\CmsBundle\Form\Type\SelectUsageTypeType
+        tags:
+            - { name: form.type, alias: selectUsageType}
+        arguments: [@armd_cms.page_manager]
+
+    form.type.usageParamsType:
+        class: Armd\Bundle\CmsBundle\Form\Type\UsageParamsType
+        tags:
+            - { name: form.type, alias: usageParamsType}
+        arguments: [@service_container]
+
+    form.type.selectLayout:
+        class: Armd\Bundle\CmsBundle\Form\Type\SelectLayoutType
+        tags:
+            - { name: form.type, alias: selectLayout}
+        arguments: [@armd_cms.page_manager]

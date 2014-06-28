@@ -1,0 +1,16 @@
+{% extends 'SonataAdminBundle:CRUD:edit.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/armdcms/css/select.css') }}" type="text/css" media="all" />
+{% endblock %}
+
+{% block form %}
+    {{ parent() }}
+    {% if selectUsageUrl is defined %}
+        <script type="text/javascript">
+            var selectUsageUrl = '{{ selectUsageUrl }}';
+        </script>
+    {% endif %}
+    <script src="{{ asset('bundles/armdcms/js/select.js') }}" type="text/javascript"></script>
+{% endblock %}

@@ -1,0 +1,27 @@
+{# content_top #}
+{% set content_top %}
+    {{ table.create({'title': 'header', 'colspan': 3}, containers, id) }}
+{% endset %}
+
+{# menu #}
+{% set menu %}
+    {{ table.create({'title': 'menu', 'colspan': 3}, containers, id) }}
+{% endset %}
+
+{# content #}
+{% set content %}
+    {{ table.create({'title': 'content', 'colspan': 3}, containers, id) }}
+{% endset %}
+
+{# content_footer #}
+{% set content_footer %}
+    {{ table.create({'title': 'footer', 'colspan': 3}, containers, id) }}
+{% endset %}
+
+<div class="tab-content-blocks">
+    {{ common.block(content_top, {'class': 'block-half'}) }}
+    {{ common.block(menu, {'class': 'block-half'}) }}
+
+    {{ common.block(content, {'class': 'block-full'}) }}
+    {{ common.block(content_footer, {'class': 'block-full'}) }}
+</div>

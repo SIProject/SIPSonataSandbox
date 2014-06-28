@@ -1,0 +1,7 @@
+twig:
+    globals:
+        version: "Markiros"
+        defaults:
+            common: "/bundles/armdadmin"
+            macros: "ArmdAdminBundle::macro"
+            layouts: "ArmdAdminBundle::layout"

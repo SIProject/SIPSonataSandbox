@@ -1,0 +1,12 @@
+services:
+    armd.content.stream.admin:
+        class: Armd\ContentAbstractBundle\Admin\StreamAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, audit: false, group: module, label: Streams }
+        arguments: [null, Armd\ContentAbstractBundle\Entity\Stream, ArmdCmsBundle:BaseResponse, @service_container]
+
+    armd.content.log.admin:
+        class: Armd\ContentAbstractBundle\Admin\ContentLogAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, audit: false, group: log, label: ContentLog }
+        arguments: [null, Armd\ContentAbstractBundle\Entity\ContentLog, ArmdCmsBundle:BaseResponse, @service_container]

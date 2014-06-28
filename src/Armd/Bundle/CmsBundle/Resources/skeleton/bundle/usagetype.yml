@@ -1,0 +1,18 @@
+parameters:
+    {{ extension_alias }}.usagetypes:
+        types:
+            index:
+                controller: {{ name }}
+                action: index
+                title: index
+
+        group:
+            index:
+                types: [index]
+
+services:
+    {{ extension_alias }}.usagetype:
+        class: %armd_cms.usagetype.class%
+        arguments: ["{{ extension_alias }}", %{{ extension_alias }}.usagetypes%, "{{ bundle }}"]
+        tags:
+            -  { name: armd_cms.usage }

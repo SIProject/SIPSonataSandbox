@@ -1,0 +1,23 @@
+{% import defaults.macros ~ '/common.html.twig' as common %}
+{% import defaults.macros ~ '/tabs.html.twig' as tabs %}
+{% import defaults.macros ~ '/table.html.twig' as table %}
+
+{% set list1 %}
+    {{ common.list(['Журнал авторизаций',
+        'Журнал изменения прав доступа',
+        'Журнал изменения контента',
+        'Журнал системы обновления',
+        'Журнал ошибок'], {'class': 'unstyled bullets'}) }}
+{% endset %}
+
+{% set block %}
+        {% set head = 'Журналы системы' %}
+        {% set body = list1 %}
+
+        {{ common.bar(head, body) }}
+{% endset %}
+
+{% block content %}
+	{{ common.block(block, {'class': 'span8'}) }}
+	<div class="clear"></div>
+{% endblock %}

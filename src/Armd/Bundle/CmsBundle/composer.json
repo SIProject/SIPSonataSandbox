@@ -1,0 +1,16 @@
+{
+    "name": "armd/cms-bundle",
+    "type": "symfony-bundle",
+    "require": {
+        "sonata-project/admin-bundle": "2.2.x-dev",
+        "sonata-project/intl-bundle": "master-dev",
+        "stof/doctrine-extensions-bundle": "*",
+        "doctrine/doctrine-fixtures-bundle": "*",
+        "armd/content-abstract-bundle": "dev-sf2.2",
+        "armd/user-bundle": "dev-sf2.2"
+    },
+    "autoload": {
+        "psr-0": { "Armd\\Bundle\\CmsBundle": "" }
+    },
+    "target-dir": "Armd/Bundle/CmsBundle"
+}

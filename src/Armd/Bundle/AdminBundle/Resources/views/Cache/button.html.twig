@@ -1,0 +1,30 @@
+<div class="header-item cache{% if busy %} busy{% endif %}">
+    <a id="cache-clear-link" href="#">
+        <div class="header-item-text">{{ 'Clear cache'|trans }}</div>
+    </a>
+</div>
+
+<script>
+    $(function() {
+        var clearUrl = "{{ path('_sys_cache_clear', {'env': env, 'debug': debug}) }}",
+            statusUrl = "{{ path('_sys_cache_status', {'env': env, 'debug': debug}) }}",
+            updateCacheLink = function(response) {
+                $("#cache-clear-link").parent()
+                    .toggleClass("busy", response.data.busy);
+            };
+
+        $("#cache-clear-link").click(function() {
+            var $el = $(this);
+
+            if (!$el.parent().hasClass("busy")) {
+                $el.parent().addClass("busy");
+                $.getJSON(
+                    clearUrl + "?" + (new Date()).getTime(),
+                    updateCacheLink
+                );
+            }
+
+            return false;
+        });
+    });
+</script>

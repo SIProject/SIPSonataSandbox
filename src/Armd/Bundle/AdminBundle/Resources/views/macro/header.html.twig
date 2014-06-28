@@ -1,0 +1,92 @@
+{% macro item(item, last, subitems) %}
+    <div class="header-item nav-item {% if item.class %} {{ item.class }}{% else %} {{ item }}{% endif %}">
+        {% if item.route == 'sonata_admin_dashboard_group' and item.group is defined %}
+            <a class="header-item-title" href="{{ path(item.route, { 'group': item.group }) }}">{{ item.title }}</a> 
+            {% if subitems %}
+                <div class="dropdown">
+                    <ul>
+                        {% for group in subitems %}
+                            {% if group.label == item.group %}
+                                {% for admin in group.items %}
+                                    {% if admin.hasroute('list') and admin.isGranted('LIST') %}
+                                        <li>
+                                            {% if admin.hasroute('create') and admin.isGranted('CREATE') %}
+                                                <a class="add" href="{{ admin.generateUrl('create')}}">+</a>
+                                            {% else %}
+                                                <i class="spacer"></i>
+                                            {% endif %}
+                                            
+                                            <a href="{{ admin.generateUrl('list')}}">{{ admin.label|trans({}, admin.translationdomain) }}</a>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        {% endfor %}  
+                    </ul>
+                </div>
+            {% endif %}
+        {% else %}
+            <a href="{{ path(item.route) }}">
+                {{ item.title }}
+            </a>
+        {% endif %}
+    </div>
+{% endmacro %}
+
+{% macro logo() %}
+    <div class="header-logo">
+        <a href="{{ url('sonata_admin_dashboard') }}">
+            <img src="{{ defaults.common }}/img/logo.png" />
+        </a>
+    </div>
+{% endmacro %}
+
+{% macro lang() %}
+{% endmacro %}
+
+{#
+{% macro item(item, last, subitems) %}
+    <div class="header-sep"></div>
+    <div class="header-item{% if item.class %} {{ item.class }}{% else %} {{ item }}{% endif %}">
+        {% if item.route == 'sonata_admin_dashboard_group' and item.group is defined %}
+        <a href="{{ path(item.route, { 'group': item.group }) }}">
+        {% else %}
+        <a href="{{ path(item.route) }}">
+        {% endif %}
+            <div class="header-item-icon"></div>
+            <div class="header-item-text">{{ item.title }}</div>
+        </a>
+
+        {% if subitems %}
+            <ul>
+                {% for group in subitems %}
+                    {% if group.label == item.group %}
+                        {% for admin in group.items %}
+                            {% if admin.hasroute('list') and admin.isGranted('LIST') %}
+                                <li>
+                                    <a href="">{{ admin.label|trans({}, admin.translationdomain) }}</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+
+    {% if last %}
+        <div class="header-sep"></div>
+    {% endif %}
+{% endmacro %}
+
+{% macro logo() %}
+    <div class="header-logo">
+        <a href="{{ url('sonata_admin_dashboard') }}">
+            <img src="{{ defaults.common }}/img/logo.png" />
+        </a>
+    </div>
+{% endmacro %}
+
+{% macro lang() %}
+{% endmacro %}
+#}

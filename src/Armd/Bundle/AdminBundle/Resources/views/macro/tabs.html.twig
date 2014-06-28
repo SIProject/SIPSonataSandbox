@@ -1,0 +1,24 @@
+{% macro create(tabs, content, pageTypeSettings) %}
+	<div class="tabbable">
+		<ul class="nav nav-tabs tab-items">
+			{% for key, tab in tabs %}
+				<li class="nav-tabs-li{% if key == 0 %} active{% endif %}">
+					<a class="nav-tabs-a" href="#tab-{{ key }}" data-toggle="tab">{{ tab.title|default(tab)|raw }}</a>
+				</li>
+			{% endfor %}
+		</ul>
+
+        <div id="tab-0" class="tab-content active">
+            {{ content }}
+        </div>
+		<div id="tab-1" class="tab-content">
+            {{ pageTypeSettings }}
+		</div>
+	</div>
+{% endmacro %}
+
+{% macro content(text, options) %}
+	<div class="tab-content-item tab-pane{% if options.selected %} active{% endif %}" id="{{ options.index }}}">
+		{{ text|raw }}
+	</div>
+{% endmacro %}

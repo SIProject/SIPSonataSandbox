@@ -1,0 +1,167 @@
+{% macro iconItem(item) %}
+	<div class="iconed{% if item.class %} {{ item.class }}{% endif %}">
+		
+		{% if (item.url is defined) and (item.url != '') %}
+			<div class="iconed-icon"></div>
+			<a href="{{ item.url }}" {% if item.target is defined %}target="{{ item.target }}"{% endif %} {% if item.onclick is defined %}onclick="{{ item.onclick }}"{% endif %} class="iconed-text">
+		{% else %}
+			<div class="iconed-text">
+		{% endif %}
+			{{ item.title }}
+		{% if (item.url is defined) and (item.url != '') %}
+			</a>
+		{% else %}
+			</div>
+		{% endif %}
+		<div class="clear"></div>
+	</div>
+{% endmacro %}
+
+{% macro block(content, options) %}
+    {% set droppable = false %}
+	{% if options.class in ['block-full', 'block-half', 'block-third', 'block-quarter'] %}
+        {% set droppable = true %}
+		{% set content %}
+	        {{ content }}
+		{% endset %}
+	{% endif %}
+
+	<div class="{{ options.class }}"{% if droppable %} data-type="droppable"{% endif %}>
+		{{ content }}
+	</div>
+{% endmacro %}
+
+{% macro getActions(admin, object) %}
+    <div class="sonata-actions-edit">
+        <ul>
+            {% if admin.hasroute('show') and admin.id(object) and admin.isGranted('VIEW', object) and admin.show|length > 0 %}
+                <li class="sae-element sonata-action-element"><a href="{{ admin.generateObjectUrl('show', object) }}">{% trans from 'SonataAdminBundle' %}link_action_show{% endtrans %}</a></li>
+            {% endif %}
+            {% if admin.hasroute('history') and admin.id(object) and admin.isGranted('EDIT', object) %}
+                <li class="sae-element sonata-action-element"><a href="{{ admin.generateObjectUrl('history', object) }}">{% trans from 'SonataAdminBundle' %}link_action_history{% endtrans %}</a></li>
+            {% endif %}
+            {% if admin.hasroute('create') and admin.isGranted('CREATE')%}
+                <li class="sae-element sonata-action-element"><a href="{{ admin.generateUrl('create') }}">{% trans from 'SonataAdminBundle' %}link_action_create{% endtrans %}</a></li>
+            {% endif %}
+            {% if admin.hasroute('list') and admin.isGranted('LIST')%}
+                <li class="sae-element sonata-action-element"><a href="{{ admin.generateUrl('list') }}">{% trans from 'SonataAdminBundle' %}link_action_list{% endtrans %}</a></li>
+            {% endif %}
+            {% if admin.hasroute('create_container') and admin.isGranted('CREATE')%}
+                <li class="sae-element sonata-action-element"><a href="{{ admin.generateUrl('create_container') }}" target="_blank">{{ "link_action_create_container"|trans }}</a></li>
+            {% endif %}
+        </ul>
+    </div>
+{% endmacro %}
+
+{% macro getForm(admin, object, form) %}
+    {% set url = admin.id(object) ? 'edit' : 'create' %}
+
+    {% if not admin.hasRoute(url)%}
+        <div>
+            {{ "form_not_available"|trans({}, "SonataAdminBundle") }}
+        </div>
+    {% else %}
+        <form action="{{ admin.generateUrl(url, {'id': admin.id(object), 'uniqid': admin.uniqid}) }}" {{ form_enctype(form) }} method="POST">
+            {% for name, form_group in admin.formgroups %}
+                <fieldset {% if form_group.collapsed %}class="sonata-ba-fielset-collapsed"{% endif %}>
+                    <legend>
+                        {% if form_group.collapsed %}
+                            <a href="" class="sonata-ba-collapsed" title="{% trans from 'SonataAdminBundle' %}link_expand{% endtrans %}">{{ name|trans({}, admin.translationdomain) }}</a>
+                        {% else %}
+                            {{ name|trans({}, admin.translationdomain) }}
+                        {% endif %}
+                    </legend>
+
+                    <div class="sonata-ba-collapsed-fields">
+                        {% for field_name in form_group.fields %}
+                            {% if admin.formfielddescriptions[field_name] is defined %}
+                                {{ form_row(form[field_name])}}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </fieldset>
+            {% endfor %}
+
+            {{ form_rest(form) }}
+
+            <div class="actions">
+                {% if app.request.isxmlhttprequest %}
+                    {% if admin.id(object) %}
+                        <input type="submit" class="btn primary" name="btn_update" value="{% trans from 'SonataAdminBundle' %}btn_update{% endtrans %}"/>
+                    {% else %}
+                        <input type="submit" class="btn" name="btn_create" value="{% trans from 'SonataAdminBundle' %}btn_create{% endtrans %}"/>
+                    {% endif %}
+                {% else %}
+                    {% if admin.id(object) %}
+                        <input type="submit" class="btn primary" name="btn_update_and_edit" value="{% trans from 'SonataAdminBundle' %}btn_update_and_edit_again{% endtrans %}"/>
+                        <input type="submit" class="btn" name="btn_update_and_list" value="{% trans from 'SonataAdminBundle' %}btn_update_and_return_to_list{% endtrans %}"/>
+
+                        {% if admin.hasroute('delete') and admin.isGranted('DELETE', object) %}
+                            {% trans from 'SonataAdminBundle' %}delete_or{% endtrans %}
+                            <a class="btn danger" href="{{ admin.generateObjectUrl('delete', object) }}">{% trans from 'SonataAdminBundle' %}link_delete{% endtrans %}</a>
+                        {% endif %}
+                    {% else %}
+                        <input class="btn primary" type="submit" name="btn_create_and_edit" value="{% trans from 'SonataAdminBundle' %}btn_create_and_edit_again{% endtrans %}"/>
+                        <input class="btn" type="submit" name="btn_create_and_create" value="{% trans from 'SonataAdminBundle' %}btn_create_and_create_a_new_one{% endtrans %}"/>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </form>
+
+        {{ form_javascript(form) }}
+        {{ form_stylesheet(form) }}
+    {% endif%}
+{% endmacro %}
+
+{% macro list(data, options) %}
+	<ul class="b-list{% if options.class %} {{ options.class }}{% endif %}">
+		{% for item in data %}
+			<li class="b-list-item">
+				{% if options.class %}
+					<div class="b-list-icon"></div>
+				{% endif %}
+				<div class="b-list-text">{{ item|raw }}</div>
+			</li>
+		{% endfor %}
+	</ul>
+	<!-- <div class="unstyled b-list{% if options.class %} {{ options.class }}{% endif %}">
+		<ul class="b-list-items">
+			{% for item in data %}
+				<li class="b-list-item">
+					{% if options.class %}
+						<div class="b-list-icon"></div>
+					{% endif %}
+					<div class="b-list-text">{{ item }}</div>
+				</li>
+			{% endfor %}
+		</ul>
+	</div> -->
+{% endmacro %}
+
+{% macro bar(title, content, options) %}
+	<div class="b-bar{% if options.class is defined %} {{ options.class }}{% endif %}">
+		<div class="b-bar-title">
+			{{ title }}
+		</div>
+		<div class="b-bar-content">
+			{{ content }}
+		</div>
+	</div>
+
+{% endmacro %}
+
+{% macro hint(title, content) %}
+	<div class="b-hint">
+		<div class="b-hint-bevel"></div>
+
+		<div class="b-hint-head">
+			<div class="b-hint-icon"></div>
+			<div class="b-hint-text">{{ title }}</div>
+			<div class="clear"></div>
+		</div>
+
+		<div class="b-hint-content">
+			{{ content }}
+		</div>
+	</div>
+{% endmacro %}

@@ -1,0 +1,18 @@
+parameters:
+    armd_admin.favorite_extension.class: Armd\Bundle\AdminBundle\Twig\Extension\FavoriteTwigExtension
+    armd_admin.statistic_extension.class: Armd\Bundle\AdminBundle\Twig\Extension\StatisticTwigExtension
+
+services:
+    armd_admin.favorite_extension:
+        class: %armd_admin.favorite_extension.class%
+        tags:
+            -  { name: twig.extension }
+        calls:
+            - [ setContainer, [ @service_container ] ]
+    
+    armd_admin.statistic_extension:
+        class: %armd_admin.statistic_extension.class%
+        tags:
+            -  { name: twig.extension }
+        calls:
+            - [ setContainer, [ @service_container ] ]

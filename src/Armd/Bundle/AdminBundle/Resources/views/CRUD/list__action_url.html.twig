@@ -1,0 +1,10 @@
+{% if object and object.getObjectId() and object.getObjectClass() %}
+    {% set objectAdmin = admin.getAdminClass(object.getObjectClass())%}
+    {% if objectAdmin %}
+        {% set target = objectAdmin.getObject(object.getObjectId())%}
+        {% if target and objectAdmin.isGranted('EDIT', target) and objectAdmin.hasRoute('edit') %}
+            <a href="{{ objectAdmin.generateObjectUrl('edit', target) }}" class="edit_link" title="{% trans from 'SonataAdminBundle' %}action_follow{% endtrans %}">
+                {% trans from 'SonataAdminBundle' %}action_follow{% endtrans %}</a>
+        {% endif %}
+    {% endif %}
+{% endif %}

@@ -1,0 +1,173 @@
+.clear {
+	clear: both;
+}
+
+.body {
+	margin: 20px 75px;
+}
+
+.iconed {
+	position: relative;
+}
+
+.iconed-icon {
+	float: left;
+	margin: 1px 2px 0 0;
+	width: 16px;
+	height: 16px;
+	background: url(../img/sprite.png) no-repeat -6px 0;
+}
+
+.iconed.righted {
+	float: right;
+}
+
+.iconed-text {
+	float: left;
+}
+
+/*
+.addNew .iconed-icon {
+	background-position: -23px -1px;
+	width: 14px;
+	height: 14px;
+}
+
+.learnMore .iconed-icon {
+	background-position: -54px -1px;
+	width: 12px;
+	height: 14px;
+}
+
+.iconed.learnMore {
+	float: right;
+	margin: 10px;
+}
+
+.list .iconed-icon {
+	background-position: -39px -1px;
+	width: 15px;
+	height: 14px;
+	margin-right: 4px;
+}
+
+.l-block {
+	width: 50%;
+	float: left;
+	margin-bottom: 20px;
+}
+
+.l-block-pad {
+	padding: 0 10px;
+}
+
+.l-block.w10 {
+	width: 10%;
+}
+.l-block.w20 {
+	width: 20%;
+}
+.l-block.w30 {
+	width: 30%;
+}
+.l-block.w40 {
+	width: 40%;
+}
+.l-block.w50 {
+	width: 50%;
+}
+.l-block.w60 {
+	width: 60%;
+}
+.l-block.w70 {
+	width: 70%;
+}
+.l-block.w80 {
+	width: 80%;
+}
+.l-block.w90 {
+	width: 90%;
+}
+
+.b-list {
+	margin: 10px 0;
+}
+
+.b-list-items {
+	margin: 0;
+	padding: 0 10px 0 20px;
+}
+
+.b-list-item {
+	margin-bottom: 5px;
+}
+
+.b-list.bullets .b-list-items {
+	list-style: none;
+	padding-left: 15px;
+}
+
+.b-list.bullets .b-list-icon {
+	width: 10px;
+	height: 14px;
+	float: left;
+	margin-left: -15px;
+	background: url(../img/sprite.png) no-repeat -80px 0px; 
+}
+
+.b-list.folders .b-list-items {
+	list-style: none;
+	padding-left: 15px;
+}
+
+.b-list.folders .b-list-icon {
+	width: 14px;
+	height: 14px;
+	float: left;
+	margin-left: -15px;
+	background: url(../img/sprite.png) no-repeat -66px 0; 
+}
+
+.b-hint {
+	font-size: 13px;
+	color: #545454;
+	position: relative;
+	padding: 15px 20px 20px;
+	background: #f6f6f6;
+	border-radius: 3px;
+	border: 1px solid #ddd;
+}
+
+.b-hint-bevel {
+	width: 100%;
+	height: 1px;
+	background: #fff;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.b-hint-head {
+	padding-bottom: 10px;
+	border-bottom: 1px solid #dbdbdb;
+}
+
+.b-hint-content {
+	margin-top: 17px;
+	line-height: 1.5em;
+}
+
+.b-hint-icon {
+	width: 24px;
+	height: 24px;
+	margin-right: 10px;
+	float: left;
+	background: url(../img/sprite.png) no-repeat -50px -46px;
+}
+
+.b-hint-text {
+	float: left;
+	line-height: 26px;
+	color: #565656;
+	font-weight: bold;
+}*/

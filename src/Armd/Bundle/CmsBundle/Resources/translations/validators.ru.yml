@@ -1,0 +1,4 @@
+Page with this url {{ string }} already exist. Edit the slug field!: Страница с url {{ string }} уже существует. Измените поле slug
+This pageType already have main container! PageType can have only one main container.: Этот тип страниц уже имеет главный контейнер! Тип страниц может иметь только один главнй контейнер
+Duplicate container with area "%area%": Повторяющийся контейнер для области "%area%"
+Can not find template with name "%string%".: Не получается найти шаблон с именем "%string%"

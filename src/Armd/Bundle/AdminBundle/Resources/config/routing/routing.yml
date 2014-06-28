@@ -1,0 +1,15 @@
+_sys_add_favorive:
+    pattern:  addFavorit/{serviceId}
+    defaults: { _controller: ArmdAdminBundle:CmsCore:addFavorit }
+
+_sys_delete_favorit:
+    pattern:  deleteFavorit/{serviceId}
+    defaults: { _controller: ArmdAdminBundle:CmsCore:deleteFavorit }
+
+_sys_cache_clear:
+    pattern: cache/clear/{env}/{debug}
+    defaults: { _controller: ArmdAdminBundle:Cache:clear, debug: false }
+
+_sys_cache_status:
+    pattern: cache/status/{env}/{debug}
+    defaults: { _controller: ArmdAdminBundle:Cache:status, debug: false }

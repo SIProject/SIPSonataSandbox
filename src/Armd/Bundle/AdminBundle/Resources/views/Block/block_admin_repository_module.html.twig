@@ -1,0 +1,35 @@
+<!--<div class="tabbable">
+	<ul class="nav nav-tabs tab-items">
+         <li class="nav-tabs-li active">
+            <a class="nav-tabs-a nav-tabs-a-reposit" href="#tab-0">Модули системы</a>
+         </li>
+<!--		<li><a href="#tab-1">Обновления (4)</a></li>-->
+	<!--</ul>
+</div>-->
+<div class="reposit-module-wrapp">
+    <h1 class="reposit-module-title">{{bundle.moduleName}}</h1>
+    <div class="reposit-module-info">
+        <img src='/bundles/armdadmin/img/folder.png' />
+        <div class="reposit-module-info-text">
+            <div>{{bundle.description}}</div>
+            <p class="reposit-item-version">Последняя версия <b>{{bundle.lastversion}}</b></p>
+        </div>
+        {% if bundle.can_delete %}
+        <ul class="gs-buttons">	
+            <li>
+                <a class="btn primary btn-reposit" href="remove/{{bundle.moduleId}}">Удалить</a>
+            </li>
+        </ul>
+        {% endif%}
+    </div>
+    <div class="reposit-module-last-version">
+        <h2>Предыдущие версии</h2>
+        {% for version in versions %}
+            <ul>
+                <li>
+                  Версия <b>{{version.number}}</b></span> <span class="module-data">от {{version.date|date('d.m Y')}} г.</span>
+                </li>
+            </ul>
+        {% endfor %}
+    </div>    
+</div>

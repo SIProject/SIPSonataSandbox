@@ -1,0 +1,13 @@
+{
+    "name": "armd/content-abstract-bundle",
+    "type": "armd-cms-bundle",    
+    "description": "Content Abstract Bundle",
+    "require": {
+        "armd/cms-bundle": "dev-sf2.2",
+        "knplabs/knp-paginator-bundle": "dev-master"
+    },
+    "autoload": {
+        "psr-0": { "Armd\\ContentAbstractBundle": "" }
+    },
+    "target-dir": "Armd/ContentAbstractBundle"            
+}

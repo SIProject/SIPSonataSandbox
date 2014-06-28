@@ -1,0 +1,69 @@
+parameters:
+    armd_cms.usage_param.checkbox.class: Armd\Bundle\CmsBundle\UsageType\Param\CheckboxParam
+    armd_cms.usage_param.choice.class: Armd\Bundle\CmsBundle\UsageType\Param\ChoiceParam
+    armd_cms.usage_param.entity.class: Armd\Bundle\CmsBundle\UsageType\Param\EntityParam
+    armd_cms.usage_param.int.class: Armd\Bundle\CmsBundle\UsageType\Param\IntParam
+    armd_cms.usage_param.null.class: Armd\Bundle\CmsBundle\UsageType\Param\NullParam
+    armd_cms.usage_param.string.class: Armd\Bundle\CmsBundle\UsageType\Param\StringParam
+    armd_cms.usage_param.template.class: Armd\Bundle\CmsBundle\UsageType\Param\TemplateParam
+    armd_cms.usage_param.role.class: Armd\Bundle\CmsBundle\UsageType\Param\RoleParam
+    armd_cms.usage_param.stream.class: Armd\Bundle\CmsBundle\UsageType\Param\StreamParam
+
+services:
+    armd_cms.usage_param.checkbox:
+        class: %armd_cms.usage_param.checkbox.class%
+        scope: prototype
+        tags:
+            - { name: usage_params }
+
+    armd_cms.usage_param.choice:
+        class: %armd_cms.usage_param.choice.class%
+        scope: prototype
+        tags:
+            - { name: usage_params }
+
+    armd_cms.usage_param.entity:
+        class: %armd_cms.usage_param.entity.class%
+        scope: prototype
+        tags:
+            - { name: usage_params }
+        arguments: [@doctrine]
+
+    armd_cms.usage_param.int:
+        class: %armd_cms.usage_param.int.class%
+        scope: prototype
+        tags:
+            - { name: usage_params }
+
+    armd_cms.usage_param.null:
+        class: %armd_cms.usage_param.null.class%
+        scope: prototype
+        tags:
+            - { name: usage_params }
+
+    armd_cms.usage_param.string:
+        class: %armd_cms.usage_param.string.class%
+        scope: prototype
+        tags:
+            - { name: usage_params }
+
+    armd_cms.usage_param.template:
+        class: %armd_cms.usage_param.template.class%
+        scope: prototype
+        tags:
+            - { name: usage_params }
+        arguments: [@armd_cms.page_manager]
+        
+    armd_cms.usage_param.role:
+        class: %armd_cms.usage_param.role.class%
+        scope: prototype
+        tags:
+            - { name: usage_params }
+        arguments: [@service_container]
+
+    armd_cms.usage_param.stream:
+        class: %armd_cms.usage_param.stream.class%
+        scope: prototype
+        tags:
+            - { name: usage_params }
+        arguments: [@doctrine]

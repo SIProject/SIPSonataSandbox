@@ -1,0 +1,72 @@
+{% extends base_template %}
+
+{% import 'ArmdAdminBundle:macro:common.html.twig' as common %}
+{% import 'ArmdAdminBundle:macro:table.html.twig' as table %}
+{% import 'ArmdAdminBundle:macro:tabs.html.twig' as tabs %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ defaults.common }}/js/libs/jquery-ui-1.8.18.custom.min.js"></script>
+    <script src="{{ defaults.common }}/js/swappable.js"></script>
+
+
+{% endblock %}
+
+{% block title %}
+    {% for menu in admin.breadcrumbs(action) %}
+        {% if loop.last  %}
+            {{ menu.label }}
+        {% endif %}
+    {% endfor %}
+{% endblock%}
+
+{% block actions %}
+    {{ common.getActions(admin, object) }}
+{% endblock %}
+
+{% block side_menu %}{{ knp_menu_render(admin.sidemenu(action), {}, 'list') }}{% endblock %}
+
+{% block content %}
+    <div class="select2-container-multi">
+        <ul class="select2-choices select2-choices-not-chosen">
+            {% for name, value in get_lost_containers(containers) %}
+            <li class="select2-search-choice">    <div>{{ name }}</div>    
+                {% if value['deleteUrl'] is defined %}
+                    <a href="{{ value['deleteUrl'] }}"
+                       onclick="return start_field_dialog_form_add_{{ id }}(this);" class="select2-search-choice-close">
+                    </a>
+                {% endif %}
+                </li>
+            {% endfor %}    
+        </ul>
+    </div>
+
+    {% if form.vars.errors|length > 0 %}
+        <div class="sonata-ba-form-error">
+            {{ form_errors(form) }}
+        </div>
+    {% endif %}
+
+    <div class="row-fluid">
+        {{ common.block(tabs, {'class': 'span12'}) }}
+        <div class="clear"></div>
+    </div>
+
+    {% include 'ArmdAdminBundle:CRUD:edit_orm_many_association_script.html.twig' %}
+{% endblock %}
+
+{% set tabsItems = [
+    {'title': 'Блоки', 'selected': 'true'},
+    {'title': 'Настройки'}] %}
+
+{% set pageTypeSettings %}
+    {{ common.getForm(admin, object, form) }}
+{% endset %}
+
+{% set layoutGrid %}
+    {{ tabs.content(include(blockPath), {'index': 1, 'selected': true}) }}
+{% endset %}
+
+{% set tabs %}
+    {{ tabs.create(tabsItems, layoutGrid, pageTypeSettings) }}
+{% endset %}

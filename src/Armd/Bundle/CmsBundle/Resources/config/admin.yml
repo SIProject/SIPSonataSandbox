@@ -1,0 +1,46 @@
+services:
+    armd_cms.admin.page:
+        class: Armd\Bundle\CmsBundle\Admin\PageAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, audit: false, group: structure, label: Page }
+        arguments: [null, Armd\Bundle\CmsBundle\Entity\Page, ArmdCmsBundle:Page, @service_container]
+
+    armd_cms.admin.container:
+        class: Armd\Bundle\CmsBundle\Admin\ContainerAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, audit: false, group: structure, label: Container }
+        arguments: [null, Armd\Bundle\CmsBundle\Entity\Container, ArmdCmsBundle:ContainerSettings, @service_container]
+        calls:
+            - [setTemplates, [edit: ArmdCmsBundle:Admin:edit_container.html.twig]]
+            
+    armd_cms.admin.pagetype:
+        class: Armd\Bundle\CmsBundle\Admin\PageTypeAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, audit: false, group: structure, label: PageType }
+        arguments: [null, Armd\Bundle\CmsBundle\Entity\PageType, ArmdCmsBundle:PageType, @service_container]
+
+    armd_cms.admin.pagecontainer:
+        class: Armd\Bundle\CmsBundle\Admin\PageContainerAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, audit: false, group: containers, label: PageContainer }
+        arguments: [null, Armd\Bundle\CmsBundle\Entity\PageContainer, ArmdCmsBundle:PageContainer, @service_container]
+        calls:
+            - [setTemplates, [edit: ArmdCmsBundle:Admin:edit_container.html.twig]]
+
+    armd_cms.admin.site:
+        class: Armd\Bundle\CmsBundle\Admin\SiteAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, audit: false, group: structure, label: Site }
+        arguments: [null, Armd\Bundle\CmsBundle\Entity\Site, SonataAdminBundle:CRUD]
+
+    armd_cms.admin.domain:
+        class: Armd\Bundle\CmsBundle\Admin\DomainAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, audit: false, group: structure, label: Domain }
+        arguments: [null, Armd\Bundle\CmsBundle\Entity\Domain, SonataAdminBundle:CRUD]
+
+    armd_cms.admin.area:
+        class: Armd\Bundle\CmsBundle\Admin\AreaAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, audit: false, group: structure, label: Area }
+        arguments: [null, Armd\Bundle\CmsBundle\Entity\Area, SonataAdminBundle:CRUD]

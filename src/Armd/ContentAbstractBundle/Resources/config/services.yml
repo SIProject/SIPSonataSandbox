@@ -1,0 +1,21 @@
+services:
+    armd.content.pool:
+        class: Armd\ContentAbstractBundle\Util\ServicesPool
+
+    armd.content.entity_cache_warmer:
+        class: Armd\ContentAbstractBundle\CacheWarmer\EntityCacheWarmer
+        tags:
+            - { name: kernel.cache_warmer}
+        arguments: [@service_container]
+
+    armd.content.cache.invalidator:
+        class: Armd\ContentAbstractBundle\Cache\CacheInvalidator
+        arguments: [@service_container]
+
+    armd.content.cache.invalidation.listener:
+        class: Armd\ContentAbstractBundle\Listener\CacheInvalidationListener
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }
+            - { name: doctrine.event_listener, event: preUpdate }
+            - { name: doctrine.event_listener, event: postRemove }
+        arguments: [@armd.content.cache.invalidator]

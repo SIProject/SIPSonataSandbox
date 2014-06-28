@@ -1,0 +1,4 @@
+{% if admin.isGranted('CREATE', object) and admin.hasRoute('copy') %}
+<a href="{{ admin.generateObjectUrl('copy', object) }}" class="add_filed_link" title="{% trans %}action_copy{% endtrans %}">
+    {% trans %}action_copy{% endtrans %}</a>
+{% endif %}

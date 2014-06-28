@@ -1,0 +1,40 @@
+{#
+
+This file is part of the Sonata package.
+
+(c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+#}
+
+{% extends base_template %}
+
+
+{% block breadcrumb %}{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="span9">
+            {% for block in blocks %}
+                {% if block.position == 'left' %}
+                    {{ sonata_block_render({ 'type': block.type, 'settings': block.settings}) }}
+                {% endif %}
+            {% endfor %}
+        </div>
+        <!--<div class="span10">
+                {% for block in blocks %}
+                    {% if block.position == 'right' %}
+                        <div class="span10-statika">
+                            <div class="span10-statika-header">
+                                <div class="span10-statika-header-img"></div>
+                                <h1>Подсказки</h1>
+                                <div class="span10-statika-header-close"></div>
+                            </div>
+                            {{ sonata_block_render({ 'type': block.type, 'settings': block.settings}) }}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+        </div>-->
+    </div>
+{% endblock %}

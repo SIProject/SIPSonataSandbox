@@ -40,7 +40,10 @@ class AppKernel extends Kernel
 
             new FOS\RestBundle\FOSRestBundle(),
 
-            new SIP\ResourceBundle\SIPResourceBundle()
+            new SIP\ResourceBundle\SIPResourceBundle(),
+
+            new Armd\Bundle\CmsBundle\ArmdCmsBundle(),
+            new Armd\Bundle\AdminBundle\ArmdAdminBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev'))) {

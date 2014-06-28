@@ -1,0 +1,15 @@
+parameters:
+    armd_cms.data_collector.twig.class: Armd\Bundle\CmsBundle\Profiler\DataCollector\TwigDataCollector
+    armd_cms.templating.engine.twig.class: Armd\Bundle\CmsBundle\Profiler\TwigProfilerEngine
+
+services:
+    armd.cms.data_collector:
+        class: Armd\Bundle\CmsBundle\Profiler\DataCollector\CmsDataCollector
+        tags:
+            - { name: data_collector, template: "ArmdCmsBundle:Profiler:profiler.html.twig", id: "admin_link" }
+
+    armd_cms.data_collector.twig:
+        class: %armd_cms.data_collector.twig.class%
+        arguments: [@service_container, %armd_cms.data_collector.twig.display_in_wdt%]
+        tags:
+            -  { name: data_collector, id: twig, template: ArmdCmsBundle:Profiler:twig}

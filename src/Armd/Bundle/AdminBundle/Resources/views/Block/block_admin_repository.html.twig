@@ -1,0 +1,40 @@
+<div class="tabbable">
+	<ul class="nav nav-tabs tab-items">
+         <li class="nav-tabs-li active">
+            <a class="nav-tabs-a nav-tabs-a-reposit" href="#tab-0">Модули системы</a>
+         </li>
+<!--		<li><a href="#tab-1">Обновления (4)</a></li>-->
+	</ul>
+</div>
+
+<div id="tab-0" class="d-tab d-tab-no-shad d-tab-current">
+
+        {% for bundle in bundles %}
+             <div class="reposit-item">  
+                   <div class="reposit-item-left"> 
+                        <a class="reposit-item-a" href='repository/{{bundle.id}}'>
+                            <img src='/bundles/armdadmin/img/folder.png' alt='{{ bundle.name|trans() }}' />
+                            <span>
+                                {{bundle.name|trans({}, 'SonataAdminBundle')}}
+                            </span>  
+                        </a>
+                       {% if bundle.info is defined %}   
+                        <div class="reposit-item-info">
+                            {{ bundle.info }}
+                        </div>
+                       {% endif %} 
+                  </div> 
+                  <div class="reposit-item-right">
+                    {% if bundle.inactive %}
+                    <ul class="gs-buttons">	
+						<li>
+                            <a class="btn primary btn-reposit" href="repository/install/{{bundle.versionId}}">Установить</a>
+                        </li>
+                    </ul>
+                    {% endif%}
+                      {% if bundle.version %}<p class="reposit-item-version">Последняя версия <b>{{bundle.version}}</b></p>{% endif%}
+                  </div>
+              </div>  
+        {% endfor %}
+
+</div>

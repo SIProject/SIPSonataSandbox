@@ -1,0 +1,50 @@
+parameters:
+    armd_cms.page_manager.class:                 Armd\Bundle\CmsBundle\Manager\PageManager
+    armd_cms.template_service.class:             Armd\Bundle\CmsBundle\Services\TemplateService
+    armd_cms.container_service.class:            Armd\Bundle\CmsBundle\Services\ContainerService
+    armd_cms.container_collection_service.class: Armd\Bundle\CmsBundle\Services\ContainerCollectionService
+    armd_cms.container_params_service.class:     Armd\Bundle\CmsBundle\Services\ContainerParamsService
+    armd_cms.route_path_service.class:           Armd\Bundle\CmsBundle\Services\RoutePathService
+    armd_cms.manager.page.class:                 Armd\Bundle\CmsBundle\Entity\PageManager
+    armd_cms.entity_manager.page.class:          Armd\Bundle\CmsBundle\Entity\Page
+    routing.loader.db.class:                     Armd\Bundle\CmsBundle\Routing\Loader\DbLoader
+
+services:
+    armd_cms.page_manager:
+        class: %armd_cms.page_manager.class%
+        arguments: [@service_container, %armd_cms.available_usage_services%]
+
+    armd_cms.http_cache:
+        class: Armd\Bundle\CmsBundle\HttpCache\HttpCache
+        arguments: [@service_container]
+
+    armd_cms.template_service:
+        class: %armd_cms.template_service.class%
+        arguments: [%armd_cms.templates.source_bundle%, %armd_cms.templates.layouts.definition%, %armd_cms.templates.modules.definition%, @service_container]
+
+    armd_cms.container_service:
+        class: %armd_cms.container_service.class%
+        arguments: [armd_cms.block.container, @http_kernel, @service_container]
+
+    armd_cms.route_path_service:
+        class: %armd_cms.route_path_service.class%
+        arguments: [@service_container]
+
+    armd_cms.container_collection_service:
+        class: %armd_cms.container_collection_service.class%
+
+    armd_cms.container_params_service:
+        class: %armd_cms.container_params_service.class%
+
+    armd_cms.entity_manager:
+        alias: doctrine.orm.default_entity_manager
+
+    armd_cms.entity_manager.page:
+        class: %armd_cms.manager.page.class%
+        arguments: [@armd_cms.entity_manager, %armd_cms.entity_manager.page.class%]
+
+    routing.loader.db:
+        class: %routing.loader.db.class%
+        arguments: [@doctrine.orm.entity_manager, @service_container]
+        tags:
+            - { name: routing.loader}

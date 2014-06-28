@@ -1,0 +1,41 @@
+<div class="st-wrapper">
+    <div class="st-header">
+        <h1 class="st-blog">{{ 'Google.Analytics'|trans }}</h1>
+        <a href="http://www.google.com/analytics" target="_blank" class="st-links">
+            http://www.google.com/analytics
+        </a>
+    </div>
+    <table class="st-table">
+        <tbody>
+            <tr>
+                <td>
+                    <p>
+                        <strong>Вчера</strong><br/>
+                        {{ data.day.dateStr }}
+                    </p>
+                    {{ 'Page views'|trans }}: {{ data.day.pageViews }}<br/>
+                    {{ 'Visits'|trans }}:     {{ data.day.visits }}<br/>
+                    {{ 'Visitors'|trans }}:   {{ data.day.visitors }}
+                </td>
+                <td>
+                    <p>
+                        <strong>Неделя</strong><br/>
+                        {{ data.week.dateStr }}
+                    </p>
+                    {{ 'Page views'|trans }}: {{ data.week.pageViews }}<br/>
+                    {{ 'Visits'|trans }}:     {{ data.week.visits }}<br/>
+                    {{ 'Visitors'|trans }}:   {{ data.week.visitors }}
+                </td>
+                <td>
+                    <p>
+                        <strong>Месяц</strong><br/>
+                        {{ data.month.dateStr }}
+                    </p>
+                    {{ 'Page views'|trans }}: {{ data.month.pageViews }}<br/>
+                    {{ 'Visits'|trans }}:     {{ data.month.visits }}<br/>
+                    {{ 'Visitors'|trans }}:   {{ data.month.visitors }}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

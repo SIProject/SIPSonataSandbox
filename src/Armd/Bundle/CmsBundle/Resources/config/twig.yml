@@ -1,0 +1,48 @@
+parameters:
+    armd_cms.path.twig_extension.class:        Armd\Bundle\CmsBundle\Twig\PathTwigExtension
+    armd_cms.content.twig_extension.class:     Armd\Bundle\CmsBundle\Twig\ContainersTwigExpention
+    armd_cms.localdate.twig_extension.class:   Armd\Bundle\CmsBundle\Twig\LocalDateTwigExtension
+    armd_cms.trim_filter.twig_extension.class: Armd\Bundle\CmsBundle\Twig\TrimFilterTwigExtension
+    armd_cms.assetic.twig_extension.class:     Armd\Bundle\CmsBundle\Twig\AsseticsTwigExtension
+    armd_cms.meta.twig_extension.class:        Armd\Bundle\CmsBundle\Twig\MetaTwigExtension
+
+services:
+    armd_cms.path.twig_extension:
+        class: %armd_cms.path.twig_extension.class%
+        tags:
+            -  { name: twig.extension }
+        calls:
+            - [setContainer, [ @service_container ] ]
+
+    armd_cms.content.twig_extension:
+        class: %armd_cms.content.twig_extension.class%
+        tags:
+            -  { name: twig.extension }
+        calls:
+            - [ setContainer, [ @service_container ] ]
+
+    armd_cms.localdate.twig_extension:
+        class: %armd_cms.localdate.twig_extension.class%
+        tags:
+            -  { name: twig.extension }
+        calls:
+            - [ setTranslator, [ @translator ] ]
+    
+    armd_cms.trim_filter.twig_extension:
+        class: %armd_cms.trim_filter.twig_extension.class%
+        tags:
+            -  { name: twig.extension }
+
+    armd_cms.assetic.twig_extension:
+        class: %armd_cms.assetic.twig_extension.class%
+        tags:
+            -  { name: twig.extension }
+
+    armd_cms.meta.twig_extension:
+        class: %armd_cms.meta.twig_extension.class%
+        tags:
+            -  { name: twig.extension }
+        calls:
+            - [ setContainer, [ @service_container ] ]
+
+

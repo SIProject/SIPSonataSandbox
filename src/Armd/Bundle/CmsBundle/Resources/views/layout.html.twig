@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %}Тестовый сайт{% endblock %}</title>
+
+        {% block meta %}
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta name="description" content="">
+            <meta name="author" content="">
+        {% endblock %}
+
+        {% block stylesheets %}
+            {{ add_stylesheets(asset('bundles/armdcms/css/bootstrap.css')) }}
+            {{ add_stylesheets(asset('bundles/armdcms/css/style.css')) }}
+            {{ add_stylesheets(asset('bundles/armdcms/css/bootstrap-responsive.css')) }}
+
+            {{ get_stylesheets()|raw }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ add_javascrit(asset('bundles/armdadmin/assets/js/jquery.js')) }}
+            {{ add_javascrit("//html5shim.googlecode.com/svn/trunk/html5.js") }}
+
+            {{ get_javascrit()|raw }}
+        {% endblock %}
+
+        {% block icons %}
+            <link rel="shortcut icon" href="images/favicon.ico">
+            <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+            <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+            <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+        {% endblock %}
+    </head>
+
+    <body>
+        {% block layout_content %}{% endblock %}
+        {{ get_statistic_counters()|raw }}
+    </body>
+</html>
