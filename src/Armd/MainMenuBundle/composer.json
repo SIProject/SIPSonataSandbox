@@ -1,0 +1,11 @@
+{
+    "name": "armd/main-menu-bundle",
+    "type": "armd-cms-bundle",
+    "require": {
+        "armd/content-abstract-bundle": "dev-sf2.2"
+    },
+    "autoload": {
+        "psr-0": { "Armd\\MainMenuBundle": "" }
+    },
+    "target-dir": "Armd/MainMenuBundle"        
+}

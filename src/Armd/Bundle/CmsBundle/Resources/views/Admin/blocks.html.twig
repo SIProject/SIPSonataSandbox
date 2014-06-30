@@ -1,16 +1,8 @@
 {% extends base_template %}
 
-{% import 'ArmdAdminBundle:macro:common.html.twig' as common %}
-{% import 'ArmdAdminBundle:macro:table.html.twig' as table %}
-{% import 'ArmdAdminBundle:macro:tabs.html.twig' as tabs %}
-
-{% block javascripts %}
-    {{ parent() }}
-    <script src="{{ defaults.common }}/js/libs/jquery-ui-1.8.18.custom.min.js"></script>
-    <script src="{{ defaults.common }}/js/swappable.js"></script>
-
-
-{% endblock %}
+{% import 'ArmdCmsBundle:macro:common.html.twig' as common %}
+{% import 'ArmdCmsBundle:macro:table.html.twig' as table %}
+{% import 'ArmdCmsBundle:macro:tabs.html.twig' as tabs %}
 
 {% block title %}
     {% for menu in admin.breadcrumbs(action) %}
@@ -52,7 +44,7 @@
         <div class="clear"></div>
     </div>
 
-    {% include 'ArmdAdminBundle:CRUD:edit_orm_many_association_script.html.twig' %}
+    {% include 'ArmdCmsBundle:CRUD:edit_orm_many_association_script.html.twig' %}
 {% endblock %}
 
 {% set tabsItems = [

@@ -1,0 +1,7 @@
+services:
+    armd_cms.main_menu.twig_extension:
+        class: Armd\MainMenuBundle\Twig\Extension\MenuTwigExtension
+        tags:
+            -  { name: twig.extension }
+        calls:
+            - [ setContainer, [ @service_container ] ]

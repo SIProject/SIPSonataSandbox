@@ -1,0 +1,21 @@
+Menu
+
+{% for item in items %}
+    <li><a href="{{ item.url }}">{% if item.current %}<strong>{% endif %}{{ item.title }}{% if item.current %}</strong>{% endif %}</a>
+        {{ _self.levelIteration(item) }}
+        
+    </li>
+{% endfor %}
+
+{% macro levelIteration(item) %}
+    {% if item.__children %}
+        <ul>
+            {% for subItem in item.__children %}
+                <li><a href="{{ subItem.url }}">{% if subItem.current %}<strong>{% endif %}{{ subItem.title }}{% if subItem.current %}</strong>{% endif %}</a>
+                {% if subItem.__children %}
+                    {{ _self.levelIteration(subItem) }}
+                {% endif %}
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endmacro %}

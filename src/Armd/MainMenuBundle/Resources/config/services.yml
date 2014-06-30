@@ -1,0 +1,5 @@
+services:
+    my.listener:
+        class: Armd\MainMenuBundle\EventListener\MenuEnabledListener
+        tags:
+            - { name: doctrine.event_listener, event: postUpdate }

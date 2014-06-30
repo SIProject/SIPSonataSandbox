@@ -43,10 +43,15 @@ class AppKernel extends Kernel
             new SIP\ResourceBundle\SIPResourceBundle(),
 
             new Armd\Bundle\CmsBundle\ArmdCmsBundle(),
-            new Armd\Bundle\AdminBundle\ArmdAdminBundle()
+            new Armd\ContentAbstractBundle\ArmdContentAbstractBundle(),
+
+            new Armd\MainMenuBundle\ArmdMainMenuBundle(),
+            new Armd\NewsBundle\ArmdNewsBundle(),
+            new Armd\TextBundle\ArmdTextBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev'))) {
+            $bundles[] = new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle();
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle();

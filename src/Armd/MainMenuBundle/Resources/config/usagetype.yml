@@ -1,0 +1,50 @@
+parameters:
+    armd_main_menu.usagetypes:
+        types:
+            toplevels:
+                controller: MainMenu
+                action: toplevels
+                title: Верхние уровни
+                params:
+                    depth:
+                        title: Глубина
+                        type: int
+                        default: 1
+                        requirements: 0   
+                    level:
+                        title: Уровень             
+                        type: int
+                        default: 1
+                        requirements: 0
+                    node:
+                        title: Начальный элемент
+                        type: entity
+                        entity: ArmdCmsBundle:Page
+                        addField: Id
+                        viewField: Title
+            status:
+                controller: MainMenu
+                action: status
+                title: Статусная строка
+
+        group:
+            toplevels:
+                types: [toplevels]
+            status:
+                types: [status]   
+                
+        params:
+            standalone:
+                title: Кешировать блок
+                type: checkbox
+            SharedMaxAge:
+                title: Время жизни кеша
+                type: int
+                default: 600                             
+
+services:
+    armd_main_menu.usagetype:
+        class: %armd_cms.usagetype.class%
+        arguments: ["armd_main_menu", %armd_main_menu.usagetypes%, @service_container, "ArmdMainMenuBundle"]
+        tags:
+            -  { name: armd_cms.usage }

@@ -1,0 +1,7 @@
+services:
+    armd.content.text.admin:
+        class: %armd_text.admin.class%
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: module, label: Text }
+            - { name: armd.content.admin }
+        arguments: [null, %armd_text.model.class%, ArmdCmsBundle:BaseResponse, @service_container]

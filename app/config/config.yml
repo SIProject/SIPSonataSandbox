@@ -1,8 +1,10 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
+    - { resource: @ArmdCmsBundle/Resources/config/parameters.yml }
     - { resource: resources/sonata.yml }
     - { resource: resources/user.yml }
+    - { resource: resources/cms.yml }
 
 framework:
     esi:             ~
@@ -27,6 +29,10 @@ framework:
 twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
+    globals:
+        defaults:
+            common: "/bundles/armdcms"
+            macros: "ArmdCmsBundle::macro"
 
 # Assetic Configuration
 assetic:
@@ -70,15 +76,35 @@ swiftmailer:
     spool:     { type: memory }
 
 stof_doctrine_extensions:
+    default_locale: ru_ru
     orm:
         default:
             sluggable: true
-            loggable: true
+            tree: true
             sortable: true
-
-genemu_form:
-    select2: ~
+            loggable: true
+            translatable: true
 
 sensio_framework_extra:
     view:    { annotations: false }
     router:  { annotations: true }
+
+genemu_form:
+    select2: ~
+    file:
+        enabled:    true
+        swf:        /vendors/uploadify/uploadify.swf
+        cancel_img: '/vendors/uploadify/uploadify-cancel.png'
+        folder:     '/uploads/files'
+    image:
+        enabled:  true
+        filters:  ['rotate', 'crop']
+        selected: 'small'
+        thumbnails:
+            small:  [75, 60]
+
+armd_news:
+    model: SIP\ResourceBundle\Entity\News
+
+armd_text:
+    model: SIP\ResourceBundle\Entity\Text

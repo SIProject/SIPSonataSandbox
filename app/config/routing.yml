@@ -1,11 +1,15 @@
+pages:
+    resource: ArmdCmsBundle:Page
+    type: db
+
 admin:
     resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
-    prefix: /
+    prefix: /admin
 
 _sonata_admin:
     resource: .
     type: sonata_admin
-    prefix: /
+    prefix: /admin
 
 sonata_user_impersonating:
     pattern:   /
@@ -13,8 +17,14 @@ sonata_user_impersonating:
 
 sonata_user:
     resource: '@SonataUserBundle/Resources/config/routing/admin_security.xml'
-    prefix: /
+    prefix: /admin
 
 fos_user_resetting:
     resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
     prefix: /resetting
+
+genemu_image:
+    resource: "@GenemuFormBundle/Resources/config/routing/image.xml"
+
+genemu_upload:
+    resource: "@GenemuFormBundle/Resources/config/routing/upload.xml"

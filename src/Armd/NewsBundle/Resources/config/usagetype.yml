@@ -1,0 +1,80 @@
+parameters:
+    armd_news.usagetypes:
+        types:
+            item:
+                controller: News
+                action: item
+                route:
+                    pattern: /item-{id}
+                    requirements:
+                        id: \d+
+            list:
+                controller: News
+                action: list
+                route:
+                    pattern: /{page}
+                    defaults:
+                        page: 1
+                    requirements:
+                        page: \d+
+                params:
+                    pagination:
+                        title: Пагинация
+                        type: checkbox
+                        default: true
+                    per_page:
+                        title: Количество элементов на странице
+                        type: int
+                        default: 10
+            archive:
+                controller: News
+                action: archive
+                route:
+                    pattern: /{page}/{from}/{to}
+                    defaults:
+                        page: 1
+                        from: null
+                        to: null
+                    requirements:
+                        page: \d+
+                        from: \d{2}.\d{2}.\d{4}
+                        to: \d{2}.\d{2}.\d{4}
+                params:
+                    per_page:
+                        title: Количество элементов на странице
+                        type: int
+                        default: 10
+                        requirements: 1
+
+        group:
+            list:
+                types: [list]
+
+            listitem:
+                types: [item, list]
+
+            archive:
+                types: [archive]
+
+        params:
+            standalone:
+                title: Кешировать блок
+                type: checkbox
+            SharedMaxAge:
+                title: Время жизни кеша
+                type: int
+                default: 600
+            content_stream:
+                title: Информационный поток
+                type: stream
+                class: Armd\ResourceBundle\Entity\News
+                requirements: 1
+
+services:
+    armd_news.usagetype:
+        class: %armd_cms.usagetype.class%
+        arguments: ["armd_news", %armd_news.usagetypes%, @service_container, "ArmdNewsBundle"]
+        tags:
+            -  { name: armd_cms.usage }
+        calls:
+            - [ setAdminId, [ armd.content.news.admin ] ]

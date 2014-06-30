@@ -1,0 +1,13 @@
+armd_cms:
+    ignore_route_patterns:
+        - /(.*)admin(.*)/
+        - /(.*)sonata_user_impersonating(.*)/
+        - /_sys/
+        - /_profiler/
+        - /_wdt/
+        - /form_captcha/
+        - /fos_user_/
+        - /sonata_user_profile_/
+        - /_assetic_/
+        - /_internal/
+        - /genemu_/

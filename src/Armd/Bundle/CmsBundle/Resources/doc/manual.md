@@ -143,9 +143,9 @@ ArmdEventBundle:
     Файл blocks.html.twig имеет следующий вид:
 
     {% macro getSettings(containers) %}
-        {% import 'ArmdAdminBundle:macro:table.html.twig' as table %}
-        {% import 'ArmdAdminBundle:macro:common.html.twig' as common %}
-        {% import 'ArmdAdminBundle:macro:tabs.html.twig' as tabs %}
+        {% import 'ArmdCmsBundle:macro:table.html.twig' as table %}
+        {% import 'ArmdCmsBundle:macro:common.html.twig' as common %}
+        {% import 'ArmdCmsBundle:macro:tabs.html.twig' as tabs %}
 
         {# test_top #}
         {% set test_top %}

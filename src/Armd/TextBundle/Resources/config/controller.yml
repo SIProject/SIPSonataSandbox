@@ -1,0 +1,8 @@
+parameters:
+    armd_text.controller.text.class: Armd\TextBundle\Controller\TextController
+
+services:
+    armd_text.controller.text:
+        class: %armd_text.controller.text.class%
+        calls:
+            - [ setContainer, [ @service_container ] ]

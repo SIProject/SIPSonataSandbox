@@ -1,0 +1,35 @@
+parameters:
+    armd_text.usagetypes:
+        types:
+            text:
+                controller: Text
+                action: item
+                params:
+                    text_id:
+                        title: Идентификатор
+                        default: 1
+                        type: entity
+                        entity: ArmdResourceBundle:Text
+                        addField: Id
+                        viewField: Title
+                        requirements: 1
+        group:
+            text:
+                types: [text]
+        params:
+            standalone:
+                title: Кешировать блок
+                type: checkbox
+            SharedMaxAge:
+                title: Время жизни кеша
+                type: int
+                default: 600
+
+services:
+    armd_text.usagetype:
+        class: %armd_cms.usagetype.class%
+        arguments: ["armd_text", %armd_text.usagetypes%, @service_container, "ArmdTextBundle"]
+        tags:
+            -  { name: armd_cms.usage }
+        calls:
+            - [ setAdminId, [ armd.content.text.admin ] ]

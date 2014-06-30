@@ -1,0 +1,11 @@
+{
+    "name": "armd/text-bundle",
+    "type": "armd-cms-bundle",
+    "require": {
+        "armd/content-abstract-bundle": "dev-sf2.2"
+    },
+    "autoload": {
+        "psr-0": { "Armd\\TextBundle": "" }
+    },
+    "target-dir": "Armd/TextBundle"
+}

@@ -1,0 +1,8 @@
+parameters:
+    armd_main_menu.controller.MainMenu.class: Armd\MainMenuBundle\Controller\MainMenuController
+
+services:
+    armd_main_menu.controller.MainMenu:
+        class: %armd_main_menu.controller.MainMenu.class%
+        calls:
+            - [ setContainer, [ @service_container ] ]

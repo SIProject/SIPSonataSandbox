@@ -8,9 +8,10 @@
     "require": {
         "php":                                     ">=5.3.3",
 
-        "doctrine/orm":                            "~2.2,>=2.2.3",
+        "doctrine/orm":                            "=v2.4.2",
         "doctrine/doctrine-bundle":                "1.2.*",
         "doctrine/doctrine-migrations-bundle":     "dev-master",
+        "doctrine/doctrine-fixtures-bundle":       "*",
 
         "twig/extensions":                         "1.0.*",
 
