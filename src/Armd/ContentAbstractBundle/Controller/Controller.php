@@ -118,7 +118,7 @@ class Controller extends BaseController
     {
         $entityName = $this->getParams()->getController();
 
-        return "ArmdResourceBundle:{$entityName}";
+        return "SIPResourceBundle:{$entityName}";
     }
 
     /**

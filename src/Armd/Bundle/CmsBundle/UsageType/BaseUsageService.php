@@ -83,7 +83,7 @@ class BaseUsageService
      * @param \Symfony\Component\DependencyInjection\ContainerInterface $container
      * @param string $bundleName
      */
-    public function __construct($name, array $usageTypeDef, ContainerInterface $container, $bundleName = 'ArmdResourceBundle')
+    public function __construct($name, array $usageTypeDef, ContainerInterface $container, $bundleName = 'SIPResourceBundle')
     {
         $this->name         = $name;
         $this->usageTypeDef = $usageTypeDef;

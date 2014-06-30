@@ -9,7 +9,7 @@ parameters:
                         title: Идентификатор
                         default: 1
                         type: entity
-                        entity: ArmdResourceBundle:Text
+                        entity: SIPResourceBundle:Text
                         addField: Id
                         viewField: Title
                         requirements: 1

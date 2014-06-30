@@ -11,15 +11,13 @@
         {% endblock %}
 
         {% block stylesheets %}
-            {{ add_stylesheets(asset('bundles/armdcms/css/bootstrap.css')) }}
-            {{ add_stylesheets(asset('bundles/armdcms/css/style.css')) }}
-            {{ add_stylesheets(asset('bundles/armdcms/css/bootstrap-responsive.css')) }}
+            {{ add_stylesheets(asset('bundles/sonataadmin/vendor/bootstrap/dist/css/bootstrap.min.css')) }}
 
             {{ get_stylesheets()|raw }}
         {% endblock %}
 
         {% block javascripts %}
-            {{ add_javascrit(asset('bundles/armdadmin/assets/js/jquery.js')) }}
+            {{ add_javascrit(asset('bundles/armdcms/assets/js/jquery.js')) }}
             {{ add_javascrit("//html5shim.googlecode.com/svn/trunk/html5.js") }}
 
             {{ get_javascrit()|raw }}
@@ -35,6 +33,5 @@
 
     <body>
         {% block layout_content %}{% endblock %}
-        {{ get_statistic_counters()|raw }}
     </body>
 </html>
