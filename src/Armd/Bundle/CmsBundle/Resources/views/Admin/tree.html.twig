@@ -28,25 +28,16 @@
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('bundles/armdcms/tree/libs/dynatree/skin/ui.dynatree.css') }}" type="text/css" />
     <link rel="stylesheet" href="{{ asset('bundles/armdcms/tree/tree.css') }}" type="text/css" media="all" />
-<style>
-.x-panel-body { top: 0 !important; border: none !important; padding-top: 10px; }
-.x-grid-table * { border: none !important; }
-.x-grid-row .x-grid-cell-special { background-color: white }
-.x-btn-default-small .x-btn-inner { padding: 0 }
-</style>
 {% endblock %}
 
-
 {% block actions %}
-    <div class="sonata-actions-edit">
-        <ul>
-            {% if admin.hasRoute('create') and admin.isGranted('CREATE')%}
-                <li class="sae-element"><a href="{{ admin.generateUrl('create') }}">{% trans from 'SonataAdminBundle' %}link_action_create{% endtrans %}</a></li>
-            {% endif %}
-        </ul>
-    </div>
+    <li>{% include 'SonataAdminBundle:Core:create_button.html.twig' %}</li>
+{% endblock %}
+
+{% block list_table %}
+
     <form class="select_form clearfix" action="">
-        <label for="select_site">{% trans from 'SonataAdminBundle' %}label_select_site{% endtrans %}</label>
+        <label for="select_site">{{ 'label_select_site'|trans }}</label>
         <select name="select_site" id="select_site" onchange="this.form.submit();" class="uniform">
             {% for site in sites %}
                 {% if siteId is defined and site.getId() == siteId %}
@@ -56,29 +47,24 @@
                 {% endif %}
             {% endfor %}
         </select>
+        <script>
+            $(document).ready(function() { $("#select_site").select2(); });
+        </script>
     </form>
-	<ul class="tree-actions" id="tree-actions">
-		<li>
-			<span id="selectAll">Выбрать все</span>
-		</li>
-		<li  class="to-open">
-			<span id="treeActions">Действие</span>
-			<ul>
-				<li class="ta-delete">
-					<a href="#">Удалить</a>
-				</li>
-				<!--<li class="ta-publish">
-					<a href="#">Опубликовать</a>
-				</li>
-				<li class="ta-unpublish">
-					<a href="#">Снять с публикации</a>
-				</li>-->
-			</ul>
-		</li>
-	</ul>
-{% endblock %}
+    <ul class="tree-actions" id="tree-actions">
+        <li>
+            <span id="selectAll">Выбрать все</span>
+        </li>
+        <li  class="to-open">
+            <span id="treeActions">Действие</span>
+            <ul>
+                <li class="ta-delete">
+                    <a href="#">Удалить</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
 
-{% block list_table %}
     <table width="100%">
         <tr valign="top">
             <td width="70%" style="border: none; padding: 0 15px 0 0;">
