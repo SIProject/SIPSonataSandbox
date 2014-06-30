@@ -46,26 +46,6 @@ class PageAdmin extends BaseTreeAdmin
     }
 
     /**
-     * @param \Sonata\AdminBundle\Show\ShowMapper $showMapper
-     *
-     * @return void
-     */
-    protected function configureShowField(ShowMapper $showMapper)
-    {
-        $showMapper
-            ->add('title')
-            ->add('slug')
-            ->add('url')
-            ->add('containers')
-            ->add('parent')
-            ->add('pageType')
-            ->add('menuEnabled')
-            ->add('toFirstChild')
-            ->add('logo', null, array('template'=>'ArmdCmsBundle:Admin:show_image.html.twig'))
-        ;
-    }
-
-    /**
      * @param \Sonata\AdminBundle\Form\FormMapper $formMapper
      *
      * @return void

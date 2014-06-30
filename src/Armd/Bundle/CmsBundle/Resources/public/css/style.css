@@ -1,0 +1,226 @@
+.content {
+	min-width:1000px;
+}
+.clear {
+    clear: both;
+}
+
+.body {
+    margin: 20px 7% 50px;
+}
+
+.iconed {
+    position: relative;
+    z-index: 1000;
+}
+
+.iconed-icon {
+    position: absolute;
+    top: 50%;
+    margin-top: -7px;
+    left: 0;
+    width: 16px;
+    height: 16px;
+    background: url(../img/sprite.png) no-repeat -6px 0;
+}
+
+.iconed.righted {
+    float: right;
+}
+
+.sonata-bc a.iconed-text {
+    margin-left: 20px;
+    float: left;
+}
+
+.sonata-bc div.iconed-text {
+    margin-left: 20px;
+    float: left;
+}
+.sonata-bc  .no-icon div.iconed-text {
+		margin-left:0;
+}
+
+.list .iconed-icon {
+    background-position: -39px -1px;
+    width: 15px;
+    height: 14px;
+    margin-right: 4px;
+}
+
+.footer {
+    margin: 40px 100px 50px;
+    padding-top: 10px;
+    border-top: 1px solid #d0d0d0;
+    color: #bbb;
+    font-size: 12px;
+}
+
+.footer-left {
+    float: left;
+}
+
+.footer-right {
+    float: right;
+}
+
+.tab-content-blocks {
+    margin: 10px 0 10px -15px;
+}
+
+.table tr .th-close-wrap {
+    background:#e7e5e6;
+    border: 1px solid #b0aeae;
+    position: absolute;
+    width: 21px;
+    height: 16px;
+    top: 9px;
+    right: 9px;
+    cursor: pointer;
+}
+
+.table tr .th-close-img {
+    background: url('../img/sprite.png') no-repeat 0 -108px;
+    width: 8px;
+    height: 8px;
+    margin: 4px 0 0 6px;
+}
+
+.block-full,
+.block-half,
+.block-third,
+.block-quarter {
+    float: left;
+
+    
+    margin-bottom: 5px;
+}
+
+.block-wrap {
+    margin-left: 15px;
+    border: 1px solid #cccccc;
+}
+.tab-content-blocks .block-wrap {
+	border:0;
+}
+.block-wrap .table-bordered thead:first-child tr:first-child th:last-child {
+	border-radius:4px 4px 0 0;
+}
+.block-wrap .table-bordered tbody:last-child tr:last-child td:first-child  {
+border-bottom-left-radius:4px;
+}
+
+.block-full {
+    width: 100%;
+}
+
+.block-half {
+    width: 50%;
+}
+
+.block-third {
+    width: 33.3333%;
+}
+
+.block-quarter {
+    width: 25%;
+}
+
+.block-quarter-wrap {
+	display:table;
+	width:100%;
+}
+.block-quarter-wrap .block-quarter {
+	width:auto;
+	display:table-cell;
+	float:none;
+}
+
+.main-block {
+
+}
+.sonata-bc .main-block .table-wrap  > .table-bordered {
+    border:1px solid #CE6F6F;
+}
+
+.sonata-bc .row .span9  {
+    width: 67%;
+    display: block;
+    margin-left: 0;
+    float: left;
+    position: relative;
+}
+
+.sonata-bc .span8 {
+    float: none;
+    width: 100%;
+    margin-left: 0;
+}
+
+.cms-block {
+    padding-top: 36px;
+}
+.sonata-bc .row-fluid  .cms-block .span8 {
+	width:100%;
+
+}
+.sonata-bc .row-fluid .span12 {
+    width: 100%
+}
+
+.sonata-bc .span12 {
+    padding-top: 36px;
+    position: relative;
+}
+
+.span10-statika .cms-block {
+    padding-top: 0;
+    padding-bottom: 15px;
+}
+
+.sonata-bc .form-inline {
+    margin-left: 11px;
+    overflow: hidden;
+}
+
+.sonata-bc .form-inline label,.form-inline .btn {
+    float: left;
+    margin-right: 10px;
+    height: 27px;
+}
+
+.sonata-bc .noborder td.menu-legend {
+	padding-left:0;
+}
+
+.menu-legend .span10-statika {
+    padding-bottom:0;
+}
+
+.sonata-bc  .menu-legend dl {
+    margin:0 20px 0 0;
+    display:inline-block;
+    vertical-align:top;
+    white-space:nowrap;
+}
+
+.sonata-bc table {
+	border-collapse:separate;
+}
+.sonata-bc table th, .sonata-bc table td {
+line-height: 18px;
+text-align: left;
+}
+.sonata-bc table th, .sonata-bc .table th {
+	padding-bottom:9px;
+	padding-top:9px;
+}
+.sonata-bc table td, .sonata-bc .table td {
+	padding-top:12px;
+	padding-bottom:12px;
+}
+
+.select2-choices-not-chosen {
+    display:inline-block;
+    border:0 !important;
+}

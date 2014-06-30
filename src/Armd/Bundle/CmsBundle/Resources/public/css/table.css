@@ -29,7 +29,7 @@
 }
 
 .table th {
-	background: url(../img/hsprite.png) repeat-x 0 -227px;
+	background: url(/bundles/armdcms/img/hsprite.png) repeat-x 0 -227px;
 	background: -moz-linear-gradient(top,  #ffffff 0%, #e5e5e5 100%);
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e5e5e5));
     background: -webkit-linear-gradient(top,  #ffffff 0%,#e5e5e5 100%);
@@ -61,7 +61,7 @@
 }
 
 .sonata-bc  .sys_delete_favorit {
-    background: url('../img/sprite.png') -137px 0;
+    background: url('/bundles/armdcms/img/sprite.png') -137px 0;
     width: 16px;
     height: 16px;
     display: block;

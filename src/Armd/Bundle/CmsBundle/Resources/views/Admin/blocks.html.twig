@@ -4,6 +4,36 @@
 {% import 'ArmdCmsBundle:macro:table.html.twig' as table %}
 {% import 'ArmdCmsBundle:macro:tabs.html.twig' as tabs %}
 
+{% block javascripts %}
+    <script src="{{ asset('bundles/armdcms/assets/js/jquery.js') }}"></script>
+
+    <script src="{{ asset('bundles/sonataadmin/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+
+    <script src="{{ asset('bundles/armdcms/assets/js/jquery-ui-1.8.23.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/armdcms/assets/js/jquery-ui-i18n.js') }}" type="text/javascript"></script>
+
+    <script src="{{ asset('bundles/sonataadmin/jquery/jquery.form.js') }}"></script>
+    <script src="{{ asset('bundles/sonataadmin/jquery/jquery.confirmExit.js') }}"></script>
+
+    <script src="{{ asset('bundles/sonataadmin/vendor/x-editable/dist/bootstrap3-editable/js/bootstrap-editable.min.js') }}"></script>
+
+    <script src="{{ asset('bundles/sonataadmin/vendor/select2/select2.min.js') }}"></script>
+
+    <script src="{{ asset('bundles/sonataadmin/App.js') }}"></script>
+    <script src="{{ asset('bundles/sonataadmin/Admin.js') }}"></script>
+
+    <script src="{{ asset('vendors/select2/select2.js') }}"></script>
+    <script src="{{ asset('vendors/uploadify/jquery.uploadify.min.js') }}"></script>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link rel="stylesheet" href="{{ asset('bundles/armdcms/css/style.css') }}" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('bundles/armdcms/css/table.css') }}" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('bundles/armdcms/css/tabs.css') }}" type="text/css" />
+{% endblock %}
+
 {% block title %}
     {% for menu in admin.breadcrumbs(action) %}
         {% if loop.last  %}
