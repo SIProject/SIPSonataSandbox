@@ -1,0 +1,3 @@
+_sip_main:
+    resource: "@SIPResourceBundle/Controller/MainController.php"
+    type:     annotation

@@ -32,7 +32,7 @@ twig:
 assetic:
     debug:          %kernel.debug%
     use_controller: false
-    bundles:        [ ]
+    bundles:        [SIPResourceBundle]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
@@ -80,5 +80,5 @@ genemu_form:
     select2: ~
 
 sensio_framework_extra:
-    view:    { annotations: false }
+    view:    { annotations: true }
     router:  { annotations: true }
