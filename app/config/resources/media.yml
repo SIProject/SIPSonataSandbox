@@ -1,0 +1,27 @@
+sonata_media:
+    buzz:
+        connector:  sonata.media.buzz.connector.curl
+    class:
+        media: SIP\ResourceBundle\Entity\Media\Media
+        gallery: SIP\ResourceBundle\Entity\Media\Gallery
+        gallery_has_media: SIP\ResourceBundle\Entity\Media\GalleryHasMedia
+    default_context: default
+    db_driver: doctrine_orm
+    contexts:
+        default:  # the default context is mandatory
+            providers:
+                - sonata.media.provider.dailymotion
+                - sonata.media.provider.youtube
+                - sonata.media.provider.image
+                - sonata.media.provider.file
+            formats:
+                small: { width: 100 , quality: 70}
+                big:   { width: 500 , quality: 70}
+    cdn:
+        server:
+            path: /uploads/media
+
+    filesystem:
+            local:
+                directory:  %kernel.root_dir%/../web/uploads/media
+                create:     false

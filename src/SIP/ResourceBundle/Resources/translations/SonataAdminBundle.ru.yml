@@ -1,10 +1,12 @@
 Action: Действия
-Actions: Действия
+Content: Контент
+Dashboard: Панель управления
 
 action_follow: Перейти к материалу
 link_action_acl: Настройка доступа
 btn_update_acl: Обновить настройки доступа
 link_edit_acl: Редектировать настроки доступа
 
-Dashboard: Панель управления
-content:  Контент
+sonata_user: Пользователи
+sonata_media: Медиа материалы
+content: Контент

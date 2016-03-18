@@ -16,6 +16,7 @@ class AppKernel extends Kernel
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
 
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
+            new Doctrine\Bundle\DoctrineCacheBundle\DoctrineCacheBundle(),
 
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
 
@@ -28,6 +29,8 @@ class AppKernel extends Kernel
 
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
 
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+
             new Genemu\Bundle\FormBundle\GenemuFormBundle(),
 
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
@@ -35,12 +38,14 @@ class AppKernel extends Kernel
             new Sonata\AdminBundle\SonataAdminBundle(),
             new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
             new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
-            new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
             new Sonata\CoreBundle\SonataCoreBundle(),
+            new Sonata\MediaBundle\SonataMediaBundle(),
+            new Sonata\IntlBundle\SonataIntlBundle(),
 
-            new FOS\RestBundle\FOSRestBundle(),
+            new Pix\SortableBehaviorBundle\PixSortableBehaviorBundle(),
 
-            new SIP\ResourceBundle\SIPResourceBundle()
+            new SIP\ResourceBundle\SIPResourceBundle(),
+            new SIP\MultipleUploadBundle\SIPMultipleUploadBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev'))) {

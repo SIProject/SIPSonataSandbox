@@ -2,3 +2,15 @@ security.login.username: Логин
 security.login.password: Пароль
 forgotten_password: Забыли пароль?
 title_user_authentication: Авторизация
+
+list.label__action: Действия
+filter.label_enabled: Активен
+
+sip_resource_user_name: Имя
+sip_resource_user_about: О себе
+sip_resource_user_avatar: Аватар
+sip_resource_user_address: Адресс
+sip_resource_user_phone: Телефон
+sip_resource_user_gender: Пол
+sip_resource_user_website: Сайт
+sip_resource_user_email: Email

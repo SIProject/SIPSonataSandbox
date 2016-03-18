@@ -1,34 +1,39 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]> <html class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>    <html class="lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>    <html class="lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html> <!--<![endif]-->
+<html lang="en">
 <head>
-    <title>{% block title %}FactCloud{% endblock %}</title>
-
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
     {% block stylesheets %}
         {% stylesheets output='assets/compiled/layout.css'
-            filter='cssrewrite' %}
-            <link href="{{ asset_url }}" rel="stylesheet" />
+        filter='cssrewrite' %}
+        <link href="{{ asset_url }}" rel="stylesheet" type="text/css"/>
         {% endstylesheets %}
     {% endblock %}
-</head>
 
-<body {% block body_attrs %}{% endblock %}>
-
-{% block content %}
-{% endblock %}
-
-{% block bodyjs %}
-    {% javascripts output='assets/compiled/layout_body.js'%}
+    {% block javascripts %}
+        {% javascripts output='assets/compiled/layout.js'
+        %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
-    {% endjavascripts %}
-{% endblock %}
+        {% endjavascripts %}
 
+    {% endblock %}
+</head>
+<body>
+    {% block header %}{% endblock %}
+
+    {% block content %}{% endblock %}
+
+    {% block footer %}{% endblock %}
+
+    {% block bodyjs %}
+        {% javascripts output='assets/compiled/layout_body.js'
+        %}
+
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+    {% endblock %}
 </body>
 </html>

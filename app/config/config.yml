@@ -3,6 +3,8 @@ imports:
     - { resource: security.yml }
     - { resource: resources/sonata.yml }
     - { resource: resources/user.yml }
+    - { resource: resources/media.yml }
+
 
 framework:
     esi:             ~
@@ -27,12 +29,16 @@ framework:
 twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
+    form:
+        resources:
+            - 'SonataCoreBundle:Form:datepicker.html.twig'
+            - 'SIPResourceBundle:Form:fields.html.twig'
 
 # Assetic Configuration
 assetic:
     debug:          %kernel.debug%
     use_controller: false
-    bundles:        [SIPResourceBundle]
+    bundles:        [ SIPResourceBundle ]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
@@ -82,3 +88,7 @@ genemu_form:
 sensio_framework_extra:
     view:    { annotations: true }
     router:  { annotations: true }
+
+knp_menu:
+    twig:
+        template: SIPResourceBundle:Menu:menu.html.twig

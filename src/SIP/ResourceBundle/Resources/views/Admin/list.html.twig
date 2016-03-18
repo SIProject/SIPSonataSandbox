@@ -1,8 +1,10 @@
 {% extends "SonataAdminBundle:CRUD:list.html.twig" %}
 
+{% block navbar_title %}
+    {% include 'SonataAdminBundle:Button:create_button.html.twig' %}
+{% endblock %}
+
 {% block list_filters %}
     {{ parent() }}
 
-    {{ form_javascript(form) }}
-    {{ form_stylesheet(form) }}
 {% endblock %}

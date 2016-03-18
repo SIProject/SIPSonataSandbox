@@ -1,25 +1,14 @@
-Real Estate List: Список объектов недвижимости
-read_estage: Объекты недвижимости
-Actions: Действия
+General: Основные
+Meta: Метаданные
 
-Title: Название
-Image: Изображение
-Price: Цена
-Currency: Валюта
-Link: Ссылка на источник
-Date Upload: Дата загрузки
-Date Update: Дата обновления
-Location: Расположение
-Description: Описание
-Distance: Расстояние от МКАД
-Home Area: Площадь дома
-Piece Area: Площадь участка
-Uploaded Image: Изображение
-City: Населенный пункт
+Setting List: Настройки
+Setting: Настройки
+sip_setting_name: Название
+sip_setting_code:  Код
+sip_setting_value: Значение
 
-General: Осноные
-properties: Детали
-price: Цена
-system: Системные
-
-admin_list_link_title: источник
+Page List: Страницы
+Page: Страницы
+sip_meta_title: Мета Title
+sip_meta_description: Мета Description
+sip_meta_keywords: Мета Keywords

@@ -1,6 +1,6 @@
 sonata_admin:
-    title:      SIP Admin Panel
-    title_logo: bundles/sipresource/img/logo_litle.png
+    title: StCard
+    title_logo: /favicon.ico
     options:
         #use_select2: false
     security:
@@ -20,6 +20,12 @@ sonata_admin:
         blocks:
             # display a dashboard block
             - { position: left, type: sonata.admin.block.admin_list }
+        groups:
+            sonata_user:
+                icon: '<i class="fa fa-users"></i>'
+            sonata_media:
+                icon: '<i class="fa fa-picture-o"></i>'
+            content: ~
     templates:
         edit:   SIPResourceBundle:Admin:edit.html.twig
         layout: SIPResourceBundle:Admin:standard_layout.html.twig

@@ -7,5 +7,6 @@
         {% if meta.metaDescription %}<meta content="{{ meta.metaDescription }}" name="description">{% endif %}
     {% endif %}
 {% endblock %}
-
-{% block content %}{% endblock %}
+{% block content %}
+    {{ page.body|raw }}
+{% endblock %}

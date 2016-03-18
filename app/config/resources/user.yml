@@ -11,6 +11,22 @@ fos_user:
             type:               fos_user_profile
             name:               fos_user_profile_form
             validation_groups:  [Authentication] # Please note : this is not the default value
+    change_password:
+            form:
+                type:               sip_profile_change_password
+    from_email:
+        address:        %mail_from_email%
+        sender_name:    %mail_from_name%
+    registration:
+        confirmation:
+          from_email:
+              address:        %mail_from_email%
+              sender_name:    %mail_from_name%
+          enabled:    true
+
+          template:   FOSUserBundle:Registration:email.txt.twig
+    service:
+        mailer:                 fos_user.mailer.default
 
 sonata_user:
     security_acl: true
@@ -19,10 +35,15 @@ sonata_user:
     class:
         user:   SIP\ResourceBundle\Entity\User\User
         group:  SIP\ResourceBundle\Entity\User\Group
-
+    admin:
+        user:
+            class: SIP\ResourceBundle\Admin\UserAdmin
     profile:  # Profile Form (firstname, lastname, etc ...)
         form:
             type:               sonata_user_profile
             handler:            sonata.user.profile.form.handler.default
             name:               sonata_user_profile_form
             validation_groups:  [Profile]
+        register:
+            form:
+                name: sonata_user_registration

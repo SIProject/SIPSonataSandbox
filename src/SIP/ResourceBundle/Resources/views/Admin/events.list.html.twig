@@ -1,0 +1,128 @@
+{% extends base_template %}
+
+{% block navbar_title %}
+    {% include 'SonataAdminBundle:Button:create_button.html.twig' %}
+{% endblock %}
+
+{% block actions %}
+    <li>{% include 'SonataAdminBundle:Button:list_button.html.twig' %}</li>
+    <li>{% include 'SonataAdminBundle:Button:create_button.html.twig' %}</li>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src='http://fullcalendar.io/js/fullcalendar-2.6.0/lib/moment.min.js'></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.0/fullcalendar.min.js'></script>
+    <script src='http://fullcalendar.io/js/fullcalendar-2.6.0/lang-all.js'></script>
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link href='//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.0/fullcalendar.min.css' rel='stylesheet' />
+    <link href='//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.0/fullcalendar.print.css' rel='stylesheet' media='print' />
+{% endblock %}
+
+{% block tab_menu %}{{ knp_menu_render(admin.sidemenu(action), {'currentClass' : 'active'}, 'list') }}{% endblock %}
+
+{% block sonata_admin_content %}
+    <div id='calendar'></div>
+    <script>
+        $(document).ready(function() {
+            var currentLangCode = 'ru';
+
+            // build the language selector's options
+            $.each($.fullCalendar.langs, function(langCode) {
+                $('#lang-selector').append(
+                        $('<option/>')
+                                .attr('value', langCode)
+                                .prop('selected', langCode == currentLangCode)
+                                .text(langCode)
+                );
+            });
+
+            // rerender the calendar when the selected option changes
+            $('#lang-selector').on('change', function() {
+                if (this.value) {
+                    currentLangCode = this.value;
+                    $('#calendar').fullCalendar('destroy');
+                    renderCalendar();
+                }
+            });
+
+            function renderCalendar() {
+                $('#calendar').fullCalendar({
+                    header: {
+                        left: 'prev,next today',
+                        center: 'title',
+                        right: 'month,agendaWeek,agendaDay'
+                    },
+                    defaultDate: '2016-01-12',
+                    lang: currentLangCode,
+                    buttonIcons: false, // show the prev/next text
+                    weekNumbers: true,
+                    editable: true,
+                    eventLimit: true, // allow "more" link when too many events
+                    events: [
+                        {% for event in events %}
+                            {
+                                id:    '{{ event.id }}',
+                                title: '{{ event.title }}',
+                                start: '{{ event.dateStart|date('Y-m-d H:i:s') }}',
+                                end:   '{{ event.dateEnd|date('Y-m-d H:i:s') }}',
+                                url:   '{{ path('admin_sip_resource_event_edit', {'id': event.id}) }}'
+                            },
+                        {% endfor %}
+                    ],
+                    eventDrop: function(event, delta, revertFunc) {
+                        alert(event.title + " было перенесено на " + event.start.format());
+
+                        if (!confirm("Вы уверены?")) {
+                            revertFunc();
+                        } else {
+
+                            $.ajax({
+                                url: '{{ path('sip_resource_ajax_event') }}',
+                                method: 'POST',
+                                data: {
+                                    id: event.id,
+                                    dateStart: event.start.format('DD.MM.YYYY HH:mm')
+                                }
+                            }).done(function(data){
+                                if (data.status == 'error') {
+                                    revertFunc();
+                                }
+                            });
+                        }
+
+                    },
+                    eventResize: function(event, delta, revertFunc) {
+
+                        alert(event.title + " было изменено время: с " + event.start.format() + " по " + event.end.format());
+
+                        if (!confirm("Вы уверены?")) {
+                            revertFunc();
+                        } else {
+                            $.ajax({
+                                url: '{{ path('sip_resource_ajax_event') }}',
+                                method: 'POST',
+                                data: {
+                                    id: event.id,
+                                    dateStart: event.start.format('DD.MM.YYYY HH:mm'),
+                                    dateEnd: event.end.format('DD.MM.YYYY HH:mm')
+                                }
+                            }).done(function(data){
+                                if (data.status == 'error') {
+                                    revertFunc();
+                                }
+                            });
+                        }
+
+                    }
+                });
+            }
+
+            renderCalendar();
+        });
+    </script>
+{% endblock %}

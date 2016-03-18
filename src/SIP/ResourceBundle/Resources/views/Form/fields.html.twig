@@ -1,43 +1,15 @@
-{% block collection_widget %}
+{% block show_sonata_image_widget %}
     {% spaceless %}
-        {% if prototype is defined %}
-            {% set child = prototype %}
-            {% set attr = attr|merge({'data-prototype': block('collection_widget_row'), 'data-prototype-name': prototype.vars.name, 'class': attr.class|default('') ~ ' controls' }) %}
-        {% endif %}
-        <div {{ block('widget_container_attributes') }}>
-            {{ form_errors(form) }}
-            {% for child in form %}
-                {{ block('collection_widget_row') }}
-            {% endfor %}
-            {{ form_rest(form) }}
-        {% if allow_add %}
-            <div><a href="#" class="btn sonata-collection-add"><i class="icon-plus"></i>{{ 'add'|trans}} {{ prototype.vars.name|trans }}</a></div>
-        {% endif %}
-    {% endspaceless %}
-{% endblock collection_widget %}
-
-{% block collection_widget_row %}
-    {% spaceless %}
-        <div class="sonata-collection-row">
-            {% if allow_delete %}
-                <a href="#" class="btn sonata-collection-delete"><i class="icon-remove"></i></a>
-            {% endif %}
-            {{ form_errors(child) }}
-            <div class="controls">
-              {{ form_widget(child) }}
-            </div>
-            <hr>
-        </div>
+        {% thumbnail value, 'admin' with {'width': 75} %}
     {% endspaceless %}
 {% endblock %}
 
-{% block image_file_type_widget %}
-    {% if (attr.path) %}
-        {% if 'http' in attr.path %}
-            <img src="{{ attr.path }}?{{ random() }}"><br>
-        {% else %}
-            <img src="{{ app.request.schemeAndHttpHost }}/{{ attr.path }}?{{ random() }}"><br>
+{% block form_errors %}
+    {% spaceless %}
+        {% if errors|length > 0 %}
+            {% for error in errors %}
+                <span class="when_no">{{ error.message }}</span>
+            {% endfor %}
         {% endif %}
-    {% endif %}
-    {{ block('form_widget_simple') }}
-{% endblock image_file_type_widget %}
+    {% endspaceless %}
+{% endblock form_errors %}

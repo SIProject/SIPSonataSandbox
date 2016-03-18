@@ -4,3 +4,6 @@ app/cache/*
 app/logs/*
 web/uploads/real_estate/*
 parameters.yml
+.idea/*
+web/assets/*
+

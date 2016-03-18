@@ -6,15 +6,18 @@ namespace SIP\ResourceBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 
-class ImageFileType extends AbstractType
+class ShowImageType extends AbstractType
 {
     public function getParent()
     {
-        return 'file';
+        return 'entity';
     }
 
+    /**
+     * @return string
+     */
     public function getName()
     {
-        return 'image_file_type';
+        return 'show_sonata_image';
     }
 }

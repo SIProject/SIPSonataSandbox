@@ -1,5 +1,29 @@
+parameters:
+
 services:
-    sip.image_file.form.type:
-        class: SIP\ResourceBundle\Form\Type\ImageFileType
+    sip_resource.helper.settings:
+        class: SIP\ResourceBundle\Helper\SettingsHelper
+        arguments: ['@service_container']
+
+    sip_resource.twig.settings:
+        class: SIP\ResourceBundle\Twig\Extension\SettingsExtension
+        arguments: ['@service_container']
+        tags: [{ name: twig.extension }]
+
+    meta.twig_extension:
+        class: SIP\ResourceBundle\Twig\Extension\MetaExtension
+        arguments:
+              doctrine: "@doctrine"
+        public: false
         tags:
-            - { name: form.type, alias: image_file_type }
+            - { name: twig.extension }
+
+    sip.resource.form.show.image.type:
+        class: SIP\ResourceBundle\Form\Type\ShowImageType
+        tags:
+            - { name: form.type, alias: show_sonata_image }
+
+    twig.extension.intl:
+        class: Twig_Extensions_Extension_Intl
+        tags:
+            - { name: twig.extension }

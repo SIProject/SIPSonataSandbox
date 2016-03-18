@@ -11,10 +11,6 @@ sonata_user_impersonating:
     pattern:   /admin
     defaults:  { _controller: SonataUserBundle:AdminSecurity:login }
 
-sonata_user:
-    resource: '@SonataUserBundle/Resources/config/routing/admin_security.xml'
-    prefix: /admin
-
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 
@@ -26,10 +22,26 @@ fos_user_resetting:
     resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
     prefix: /resetting
 
-sonata_user_profile:
-    resource: "@SonataUserBundle/Resources/config/routing/sonata_profile_1.xml"
-    prefix: /profile
+sonata_user:
+    resource: '@SonataUserBundle/Resources/config/routing/admin_security.xml'
+    prefix: /admin
+
+gallery:
+    resource: '@SonataMediaBundle/Resources/config/routing/gallery.xml'
+    prefix: /media/gallery
+
+media:
+    resource: '@SonataMediaBundle/Resources/config/routing/media.xml'
+    prefix: /media
+
+sip_multiple_upload:
+    resource: "@SIPMultipleUploadBundle/Resources/config/routing.yml"
+    prefix:   /
 
 SIPResourceBundle:
     resource: '@SIPResourceBundle/Resources/routing/routing.yml'
     prefix:   /
+
+_sip_pages:
+    resource: "@SIPResourceBundle/Controller/PageController.php"
+    type:     annotation
