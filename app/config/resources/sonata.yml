@@ -1,6 +1,6 @@
 sonata_admin:
-    title: StCard
-    title_logo: /favicon.ico
+    title: SandBox
+    #title_logo: /favicon.ico
     options:
         #use_select2: false
     security:

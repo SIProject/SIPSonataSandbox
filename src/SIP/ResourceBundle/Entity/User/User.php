@@ -148,8 +148,10 @@ class User extends BaseUser
 
     public function setEmail($email)
     {
-        $this->setUsername($email);
-        $this->setUsernameCanonical($email);
+        if (!$this->getUsername()) {
+            $this->setUsername($email);
+            $this->setUsernameCanonical($email);
+        }
         return parent::setEmail($email);
     }
 
