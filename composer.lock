@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d243384169e24dc56e6ae45c4bfd8331",
-    "content-hash": "3eb4258c8659c08b8ef37ba13504dba4",
+    "hash": "e920424212ac2113d40703957343b815",
+    "content-hash": "66fae79ca5f223447915a7245a433f0f",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -120,7 +120,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/annotations/zipball/07a9af2d4de5f9ef0bf2d9ae94421e5fc50d7859",
+                "url": "https://api.github.com/repos/doctrine/annotations/zipball/2e1b1f7597e2f647e99e96e747fcae9718ac817b",
                 "reference": "f25c8aab83e0c3e976fd7d19875f198ccf2f7535",
                 "shasum": ""
             },
@@ -258,7 +258,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/collections/zipball/866e100a425b8b73d15393fd081c6bf067f05bf9",
+                "url": "https://api.github.com/repos/doctrine/collections/zipball/392b8dd9e04c073e832fcda99270ec5a8f5e30cd",
                 "reference": "866e100a425b8b73d15393fd081c6bf067f05bf9",
                 "shasum": ""
             },
@@ -1926,7 +1926,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/Gaufrette/zipball/89c7d01b04b0b8260aa21a9b76f6320a5954278d",
+                "url": "https://api.github.com/repos/KnpLabs/Gaufrette/zipball/f6b36f37bacc2ec3827708e61cf1fa990755b448",
                 "reference": "6285f61fef25d245044db1d669b113dee0bf1af8",
                 "shasum": ""
             },
@@ -2501,7 +2501,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/a9ccae25cbb5c0af6f2a549e4cc3ee6628c253ab",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/dec4e574c2efcbbd4b6441ef64334daa79edf8f2",
                 "reference": "6a35f7387b1b66121c37436e72378d58125cef90",
                 "shasum": ""
             },
@@ -2580,7 +2580,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nelmio/NelmioApiDocBundle/zipball/2a0f95eac0ab2aa466545d0b21d15739636811b7",
+                "url": "https://api.github.com/repos/nelmio/NelmioApiDocBundle/zipball/718dfc6e9c2b37000c3dd0740ebd09cffd3bc022",
                 "reference": "2a0f95eac0ab2aa466545d0b21d15739636811b7",
                 "shasum": ""
             },
@@ -3069,7 +3069,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioFrameworkExtraBundle/zipball/a75f351c8e7cc99f1931796c0a78d551178c3bdf",
+                "url": "https://api.github.com/repos/sensiolabs/SensioFrameworkExtraBundle/zipball/507a15f56fa7699f6cc8c2c7de4080b19ce22546",
                 "reference": "3e8936fe13aa4086644977d334d8fcd275f50357",
                 "shasum": ""
             },
@@ -3269,7 +3269,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/50d30cdc2ca2fd18506e31a92ffb1fd146c4e5f8",
+                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/837efd92de334de47b5fc7e2f88deac4e9b7bfad",
                 "reference": "8aabc50a24e1255dbb6ec4c90be56f05326ad473",
                 "shasum": ""
             },
@@ -5022,7 +5022,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/0c019035597e9b5a4cb8c0227d66fa97a235298a",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/df01f06a8539272266f0d6437e49c1272dfd81b2",
                 "reference": "fd50be95d90e61604a15a740a49b792526ca976a",
                 "shasum": ""
             },

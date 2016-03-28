@@ -8,6 +8,8 @@ parameters:
     sonata.media.admin.media.class: SIP\ResourceBundle\Admin\MediaAdmin
     sonata.user.admin.user.class: SIP\ResourceBundle\Admin\UserAdmin
 
+    sip.resourse.metadata.admin.class: SIP\ResourceBundle\Admin\MetaDataAdmin
+    sip.resourse.metadata.model.class: SIP\ResourceBundle\Entity\MetaData
 services:
     sip.resourse.setting.admin:
         class: %sip.resourse.setting.admin.class%
@@ -38,3 +40,9 @@ services:
         calls:
             - [setTranslationDomain, [ %sonata.media.admin.gallery.translation_domain% ] ]
             - [setTemplates, [ {list: SonataMediaBundle:GalleryAdmin:list.html.twig} ] ]
+
+    sip.resourse.metadata.admin:
+        class: %sip.resourse.metadata.admin.class%
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: content, label: Metadata }
+        arguments: [null, %sip.resourse.metadata.model.class%, null]
